@@ -130,8 +130,6 @@ NSString * const endAngleKey = @"endAngle";
         // Color it
 //        CGContextSetFillColorWithColor(ctx, self.fillColor.CGColor);
 //        CGContextSetStrokeColorWithColor(ctx, self.strokeColor.CGColor);
-//        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
-//        CGContextSetStrokeColorWithColor(ctx, [UIColor purpleColor].CGColor);
         CGContextSetLineWidth(ctx, self.strokeWidth);
         
         CGContextDrawPath(ctx, kCGPathFillStroke);
