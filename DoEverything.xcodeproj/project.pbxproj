@@ -18,6 +18,14 @@
 		A32D9D4B1A27024E0079DA95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32D9D491A27024E0079DA95 /* LaunchScreen.xib */; };
 		A32D9D571A27024E0079DA95 /* DoEverythingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D9D561A27024E0079DA95 /* DoEverythingTests.m */; };
 		A32D9D621A2704770079DA95 /* DEGetValues.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D9D611A2704770079DA95 /* DEGetValues.m */; };
+		A3B11DAB1A35DF130045F4F1 /* DEGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B11DAA1A35DF130045F4F1 /* DEGauge.m */; };
+		A3B11DB01A35E75C0045F4F1 /* DEGNeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B11DAF1A35E75C0045F4F1 /* DEGNeedleView.m */; };
+		A3B11DB31A35E7A20045F4F1 /* DEGArcLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B11DB21A35E7A20045F4F1 /* DEGArcLayer.m */; };
+		A3B11DB61A35E7D50045F4F1 /* DEGGradientArcLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B11DB51A35E7D50045F4F1 /* DEGGradientArcLayer.m */; };
+		A3B11DB91A35ED750045F4F1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B11DB81A35ED750045F4F1 /* QuartzCore.framework */; };
+		A3B11DBB1A35ED7E0045F4F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B11DBA1A35ED7E0045F4F1 /* UIKit.framework */; };
+		A3B11DBD1A35ED8B0045F4F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B11DBC1A35ED8B0045F4F1 /* Foundation.framework */; };
+		A3B11DBF1A35ED950045F4F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B11DBE1A35ED950045F4F1 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +59,19 @@
 		A32D9D561A27024E0079DA95 /* DoEverythingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoEverythingTests.m; sourceTree = "<group>"; };
 		A32D9D601A2704770079DA95 /* DEGetValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEGetValues.h; sourceTree = "<group>"; };
 		A32D9D611A2704770079DA95 /* DEGetValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEGetValues.m; sourceTree = "<group>"; };
+		A3B11DA91A35DF130045F4F1 /* DEGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEGauge.h; sourceTree = "<group>"; };
+		A3B11DAA1A35DF130045F4F1 /* DEGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEGauge.m; sourceTree = "<group>"; };
+		A3B11DAE1A35E75C0045F4F1 /* DEGNeedleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEGNeedleView.h; path = "Support Classes/DEGNeedleView.h"; sourceTree = "<group>"; };
+		A3B11DAF1A35E75C0045F4F1 /* DEGNeedleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEGNeedleView.m; path = "Support Classes/DEGNeedleView.m"; sourceTree = "<group>"; };
+		A3B11DB11A35E7A20045F4F1 /* DEGArcLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEGArcLayer.h; path = "Support Classes/Arc Layers/DEGArcLayer.h"; sourceTree = "<group>"; };
+		A3B11DB21A35E7A20045F4F1 /* DEGArcLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEGArcLayer.m; path = "Support Classes/Arc Layers/DEGArcLayer.m"; sourceTree = "<group>"; };
+		A3B11DB41A35E7D50045F4F1 /* DEGGradientArcLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEGGradientArcLayer.h; path = "Support Classes/Arc Layers/DEGGradientArcLayer.h"; sourceTree = "<group>"; };
+		A3B11DB51A35E7D50045F4F1 /* DEGGradientArcLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEGGradientArcLayer.m; path = "Support Classes/Arc Layers/DEGGradientArcLayer.m"; sourceTree = "<group>"; };
+		A3B11DB71A35E9900045F4F1 /* DEGArcLayerSubclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DEGArcLayerSubclass.h; path = "Support Classes/Arc Layers/DEGArcLayerSubclass.h"; sourceTree = "<group>"; };
+		A3B11DB81A35ED750045F4F1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A3B11DBA1A35ED7E0045F4F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A3B11DBC1A35ED8B0045F4F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A3B11DBE1A35ED950045F4F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +79,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3B11DBF1A35ED950045F4F1 /* CoreGraphics.framework in Frameworks */,
+				A3B11DBD1A35ED8B0045F4F1 /* Foundation.framework in Frameworks */,
+				A3B11DBB1A35ED7E0045F4F1 /* UIKit.framework in Frameworks */,
+				A3B11DB91A35ED750045F4F1 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +112,7 @@
 			children = (
 				A32D9D361A27024E0079DA95 /* DoEverything */,
 				A32D9D531A27024E0079DA95 /* DoEverythingTests */,
+				A3B11DC01A35EDF50045F4F1 /* Frameworks */,
 				A32D9D351A27024E0079DA95 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +129,7 @@
 		A32D9D361A27024E0079DA95 /* DoEverything */ = {
 			isa = PBXGroup;
 			children = (
+				A3B11DA81A35DF130045F4F1 /* DEGauge */,
 				A32C30DE1A2EF3E5002D7381 /* DEPieChart */,
 				A32D9D3B1A27024E0079DA95 /* AppDelegate.h */,
 				A32D9D3C1A27024E0079DA95 /* AppDelegate.m */,
@@ -143,6 +170,49 @@
 				A32D9D551A27024E0079DA95 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A3B11DA81A35DF130045F4F1 /* DEGauge */ = {
+			isa = PBXGroup;
+			children = (
+				A3B11DAC1A35E6E30045F4F1 /* Support Classes */,
+				A3B11DA91A35DF130045F4F1 /* DEGauge.h */,
+				A3B11DAA1A35DF130045F4F1 /* DEGauge.m */,
+			);
+			path = DEGauge;
+			sourceTree = "<group>";
+		};
+		A3B11DAC1A35E6E30045F4F1 /* Support Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A3B11DAD1A35E72A0045F4F1 /* Arc Layers */,
+				A3B11DAE1A35E75C0045F4F1 /* DEGNeedleView.h */,
+				A3B11DAF1A35E75C0045F4F1 /* DEGNeedleView.m */,
+			);
+			name = "Support Classes";
+			sourceTree = "<group>";
+		};
+		A3B11DAD1A35E72A0045F4F1 /* Arc Layers */ = {
+			isa = PBXGroup;
+			children = (
+				A3B11DB11A35E7A20045F4F1 /* DEGArcLayer.h */,
+				A3B11DB21A35E7A20045F4F1 /* DEGArcLayer.m */,
+				A3B11DB71A35E9900045F4F1 /* DEGArcLayerSubclass.h */,
+				A3B11DB41A35E7D50045F4F1 /* DEGGradientArcLayer.h */,
+				A3B11DB51A35E7D50045F4F1 /* DEGGradientArcLayer.m */,
+			);
+			name = "Arc Layers";
+			sourceTree = "<group>";
+		};
+		A3B11DC01A35EDF50045F4F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A3B11DBE1A35ED950045F4F1 /* CoreGraphics.framework */,
+				A3B11DBC1A35ED8B0045F4F1 /* Foundation.framework */,
+				A3B11DBA1A35ED7E0045F4F1 /* UIKit.framework */,
+				A3B11DB81A35ED750045F4F1 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,12 +316,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3B11DB01A35E75C0045F4F1 /* DEGNeedleView.m in Sources */,
 				A32D9D3D1A27024E0079DA95 /* AppDelegate.m in Sources */,
+				A3B11DB61A35E7D50045F4F1 /* DEGGradientArcLayer.m in Sources */,
 				A32D9D3A1A27024E0079DA95 /* main.m in Sources */,
+				A3B11DB31A35E7A20045F4F1 /* DEGArcLayer.m in Sources */,
 				A32C30E11A2EF527002D7381 /* DEPieLabel.m in Sources */,
 				A32D9D431A27024E0079DA95 /* ViewController.m in Sources */,
 				A32C30E41A2EF53F002D7381 /* DEPieAnimator.m in Sources */,
 				A32D9D401A27024E0079DA95 /* DoEverything.xcdatamodeld in Sources */,
+				A3B11DAB1A35DF130045F4F1 /* DEGauge.m in Sources */,
 				A32D9D621A2704770079DA95 /* DEGetValues.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

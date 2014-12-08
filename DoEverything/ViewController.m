@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "DEGetValues.h"
+#import "DEGauge.h"
 
 @interface ViewController ()
 
@@ -47,6 +48,8 @@
     NSLog(@"spaceInfo: %@", _spaceInfo);
     
 //    [DEGetValues report_memory];
+    [self showGuage];
+    
     
 }
 
@@ -61,6 +64,17 @@
     UIView *pieView = [[UIView alloc] initWithFrame:CGRectMake(10, 30, 150, 150)];
     [pieView setBackgroundColor:[UIColor colorWithRed:217/255 green:255 blue:255 alpha:1]];
     
+}
+
+- (void)showGuage
+{
+    DEGauge *bigGauge = [[DEGauge alloc] initWithFrame:CGRectMake(10, 70, 150, 90)];
+    bigGauge.startAngle = 0;
+    bigGauge.endAngle = 180;
+    bigGauge.value = 0;
+    [self.view addSubview:bigGauge];
+    
+    [bigGauge setValue:60 animated:YES];
 }
 
 @end
