@@ -13,7 +13,7 @@
 - (void)setup
 {
     NSLog(@"%s", __FUNCTION__);
-    _needleColor = [UIColor greenColor];//[UIColor blackColor];
+    _needleColor = [UIColor colorWithRed:74/255.0 green:125/255.0 blue:135/255.0 alpha:1];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -23,7 +23,7 @@
     if (self)
     {
         [self setup];
-        self.backgroundColor = [UIColor clearColor];//[UIColor whiteColor];// [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }

@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithRed:255/255.0 green:240/255.0 blue:237/255.0 alpha:1]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1]];
     
     float total = [DEGetValues disSpace];
     uint64_t total2 = [DEGetValues getFreeDiskSpace];
@@ -67,12 +67,18 @@
 
 - (void)showGauge
 {
+//    UIColor *cForBackground = [UIColor colorWithRed:253/255.0 green:111/255.0 blue:113/255.0 alpha:1];
+//    UIColor *cForArc = [UIColor colorWithRed:192/255.0 green:68/255.0 blue:71/255.0 alpha:1];
+
+    UIColor *cForBackground = [UIColor colorWithRed:253/255.0 green:174/255.0 blue:56/255.0 alpha:1];
+    UIColor *cForArc = [UIColor colorWithRed:243/255.0 green:115/255.0 blue:33/255.0 alpha:1];
+    
     DEGauge *bigGauge = [[DEGauge alloc] initWithFrame:CGRectMake(10, 70, 200, 120)];
-    bigGauge.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:217/255 green:236/255 blue:235/255 alpha:1];
-    bigGauge.backgroundArcFillColor = [UIColor purpleColor];// [UIColor colorWithRed:243/255 green:239/255 blue:232/255 alpha:1];
-    bigGauge.backgroundArcStrokeColor = [UIColor purpleColor];//[UIColor colorWithRed:243/255 green:239/255 blue:232/255 alpha:1];
-    bigGauge.fillArcFillColor = [UIColor grayColor];//[UIColor colorWithRed:217/255 green:236/255 blue:235/255 alpha:1];
-    bigGauge.fillArcStrokeColor = [UIColor grayColor];//[UIColor colorWithRed:217/255 green:236/255 blue:235/255 alpha:1];
+    bigGauge.backgroundColor = [UIColor clearColor];
+    bigGauge.backgroundArcFillColor = cForBackground;
+    bigGauge.backgroundArcStrokeColor = cForBackground;
+    bigGauge.fillArcFillColor =  cForArc;
+    bigGauge.fillArcStrokeColor = cForArc;
     bigGauge.startAngle = 0;
     bigGauge.endAngle = 180;
     bigGauge.value = 0;

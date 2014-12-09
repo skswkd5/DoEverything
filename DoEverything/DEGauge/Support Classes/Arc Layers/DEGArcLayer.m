@@ -141,8 +141,8 @@ NSString * const endAngleKey = @"endAngle";
         CGContextClosePath(ctx);
 
         // Color it
-        CGContextSetFillColorWithColor(ctx, self.fillColor.CGColor);
-        CGContextSetStrokeColorWithColor(ctx, self.strokeColor.CGColor);
+        CGContextSetFillColorWithColor(ctx, [self.fillColor CGColor]);
+        CGContextSetStrokeColorWithColor(ctx, [self.strokeColor CGColor]);
         CGContextSetLineWidth(ctx, self.strokeWidth);
         
         CGContextDrawPath(ctx, kCGPathFillStroke);
