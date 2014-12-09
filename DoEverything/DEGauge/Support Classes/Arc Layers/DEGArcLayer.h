@@ -7,7 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-
+#import <UIKit/UIKit.h>
 
 typedef enum {
     ArcEdgeInner = 0,
@@ -25,8 +25,8 @@ typedef enum {
 @property (nonatomic,assign) CGFloat endAngle;
 @property (nonatomic,assign) CGFloat strokeWidth;
 @property (nonatomic,assign) CGFloat arcThickness;
-//@property (nonatomic) UIColor *fillColor;
-//@property (nonatomic) UIColor *strokeColor;
+@property (nonatomic) UIColor *fillColor;
+@property (nonatomic) UIColor *strokeColor;
 
 - (CGPoint)pointForArcEdge:(ArcEdge)edge andArcSide:(ArcSide)side;
 

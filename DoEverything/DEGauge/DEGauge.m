@@ -19,9 +19,6 @@
 @interface DEGauge()
 
 @property (nonatomic) CALayer *containerLayer;
-//@property (nonatomic) CALayer *valueArcLayer;
-//@property (nonatomic) CALayer *backgroundArcLayer;
-
 @property (nonatomic) DEGGradientArcLayer *valueArcLayer;
 @property (nonatomic) DEGGradientArcLayer *backgroundArcLayer;
 
@@ -29,37 +26,32 @@
 
 @implementation DEGauge
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 #pragma mark - Initialization / Construction
 - (void)setup
 {
+    NSLog(@"%s", __FUNCTION__);
     _minValue = 0;
     _maxValue = 100;
     _value = 0;
 
-    _startAngle = 40;
-    _endAngle = 140;
+    _startAngle = 40;       //부채꼴 시작 각도
+    _endAngle = 140;        //부채꼴 끝나는 각도
 
-    _arcThickness = 50;
+    _arcThickness = 50;         //게이지의 두께
 
-    _backgroundArcFillColor = [UIColor colorWithRed:.82 green:.82 blue:.82 alpha:1];
-    _backgroundArcStrokeColor = [UIColor colorWithRed:.82 green:.82 blue:.82 alpha:1];
+    _backgroundArcFillColor = [UIColor colorWithRed:255/255.0 green:240/255.0 blue:237/255.0 alpha:1];//[UIColor colorWithRed:.82 green:.82 blue:.82 alpha:1];
+    _backgroundArcStrokeColor = [UIColor colorWithRed:255/255.0 green:240/255.0 blue:237/255.0 alpha:1];//[UIColor colorWithRed:.82 green:.82 blue:.82 alpha:1];
 
     CGFloat width = self.frame.size.width;
     CGFloat height = self.frame.size.height;
 
     CGFloat needleWidth = width * NEEDLE_BASE_WIDTH_RATIO;
     _needleView = [[DEGNeedleView alloc] initWithFrame:CGRectMake(0,0,needleWidth,width/2+4)];
+    NSLog(@"needle.frame: %@", NSStringFromCGRect(_needleView.frame));
 
     if ( [_needleView respondsToSelector:@selector(contentScaleFactor)] )
     {
+        //기기의 해상도 범위 내에, 이미지를 제대로 된 비율과 크기로 출력하도록 해준다.
         _needleView.contentScaleFactor = [[UIScreen mainScreen] scale];
     }
     [self addSubview:_needleView];
@@ -69,6 +61,10 @@
     _needleView.layer.anchorPoint = CGPointMake(.5, (height-(needleWidth/2))/height);
     _needleView.center = CGPointMake(width/2, height-needleWidth/2);
     [self rotateNeedleByAngle:-90+_startAngle];
+    NSLog(@"needle.frame: %@", NSStringFromCGRect(_needleView.frame));
+    NSLog(@"anchoerPoint: %@", NSStringFromCGPoint(_needleView.layer.anchorPoint));
+    NSLog(@"needle.center: %@", NSStringFromCGPoint(_needleView.center));
+
 
     _containerLayer = [CALayer layer];
     _containerLayer.frame = CGRectMake(0, 0, width, height);
@@ -78,11 +74,13 @@
 
 - (void)awakeFromNib
 {
+    NSLog(@"%s", __FUNCTION__);
     [self setup];
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
+    NSLog(@"%s", __FUNCTION__);
     self = [super initWithFrame:frame];
     if (self)
     {
@@ -94,6 +92,7 @@
 #pragma mark - Private / Protected
 - (void)setValue:(id)value forKey:(NSString *)key animated:(BOOL)animated
 {
+    NSLog(@"%s: key - %@", __FUNCTION__, key);
     // half second duration or none depending on animated flag
     float duration = animated ? .5 : 0;
     [UIView animateWithDuration:duration
@@ -109,6 +108,9 @@
 
 - (void)rotateNeedleByAngle:(float)angle
 {
+    //바늘 회전하기
+    NSLog(@"%s", __FUNCTION__);
+    
     CATransform3D rotatedTransform = self.needleView.layer.transform;
     rotatedTransform = CATransform3DRotate(rotatedTransform, DEGREES_TO_RADIANS(angle), 0.0f, 0.0f, 1.0f);
     self.needleView.layer.transform = rotatedTransform;
@@ -116,10 +118,12 @@
 
 - (void)setupArcLayers
 {
-//    _backgroundArcLayer = [MSGradientArcLayer layer];
+    //게이지 이미지 값 세팅하기
+    NSLog(@"%s", __FUNCTION__);
+    
     _backgroundArcLayer = [DEGGradientArcLayer layer];
-//    _backgroundArcLayer.strokeColor = _backgroundArcStrokeColor;
-//    _backgroundArcLayer.fillColor = _backgroundArcFillColor;
+    _backgroundArcLayer.strokeColor = _backgroundArcStrokeColor;
+    _backgroundArcLayer.fillColor = _backgroundArcFillColor;
     _backgroundArcLayer.gradient = _backgroundGradient;
     _backgroundArcLayer.strokeWidth = 1.0;
     _backgroundArcLayer.arcThickness = _arcThickness;
@@ -133,10 +137,9 @@
     }
     [_containerLayer addSublayer:_backgroundArcLayer];
     
-//    _valueArcLayer = [MSGradientArcLayer layer];
     _valueArcLayer = [DEGGradientArcLayer layer];
-//    _valueArcLayer.strokeColor = _fillArcStrokeColor;
-//    _valueArcLayer.fillColor = _fillArcFillColor;
+    _valueArcLayer.strokeColor = _fillArcStrokeColor;
+    _valueArcLayer.fillColor = _fillArcFillColor;
     _valueArcLayer.gradient = _fillGradient;
     _valueArcLayer.arcThickness = _arcThickness;
     _valueArcLayer.startAngle = DEGREES_TO_RADIANS((_startAngle+180));
@@ -152,6 +155,8 @@
 
 - (void)fillUpToAngle:(float)angle
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     if ( _valueArcLayer )
     {
         _valueArcLayer.endAngle = DEGREES_TO_RADIANS((angle+180));
@@ -160,6 +165,8 @@
 
 - (float)angleForValue:(float)value
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     float ratio = (value - _minValue) / (_maxValue - _minValue);
     float angle = _startAngle + ((_endAngle - _startAngle) * ratio);
     return angle;
@@ -168,6 +175,8 @@
 #pragma mark - Setters
 - (void)setArcThickness:(float)arcThickness
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     if ( _arcThickness != arcThickness )
     {
         _arcThickness = arcThickness;
@@ -177,6 +186,8 @@
 
 - (void)setStartAngle:(float)startAngle
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     if ( _startAngle != startAngle )
     {
         float oldNeedleAngle = [self angleForValue:self.value];
@@ -193,6 +204,8 @@
 
 - (void)setEndAngle:(float)endAngle
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     if ( _endAngle != endAngle )
     {
         float oldNeedleAngle = [self angleForValue:self.value];
@@ -209,6 +222,8 @@
 
 - (void)setMinValue:(float)minValue
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     if ( _minValue != minValue )
     {
         // don't let the min value be greater than the max value
@@ -219,6 +234,8 @@
 
 - (void)setMaxValue:(float)maxValue
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     if ( _maxValue != maxValue )
     {
         // don't let the max value be lower then the min value
@@ -229,6 +246,8 @@
 
 - (void)setValue:(float)value
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     if ( _value != value )
     {
         // setting value above the max value sets to max value
@@ -249,22 +268,26 @@
 
 - (void)setBackgroundArcFillColor:(UIColor *)backgroundArcFillColor
 {
-//    _backgroundArcLayer.fillColor = backgroundArcFillColor;
+    NSLog(@"%s", __FUNCTION__);
+    _backgroundArcLayer.fillColor = backgroundArcFillColor;
 }
 
 - (void)setBackgroundArcStrokeColor:(UIColor *)backgroundArcStrokeColor
 {
-//    _backgroundArcLayer.strokeColor = backgroundArcStrokeColor;
+    NSLog(@"%s", __FUNCTION__);
+    _backgroundArcLayer.strokeColor = backgroundArcStrokeColor;
 }
 
 - (void)setFillArcFillColor:(UIColor *)foregroundArcFillColor
 {
-//    _valueArcLayer.fillColor = foregroundArcFillColor;
+    NSLog(@"%s", __FUNCTION__);
+    _valueArcLayer.fillColor = foregroundArcFillColor;
 }
 
 - (void)setFillArcStrokeColor:(UIColor *)foregroundArcStrokeColor
 {
-//    _valueArcLayer.strokeColor = foregroundArcStrokeColor;
+    NSLog(@"%s", __FUNCTION__);
+    _valueArcLayer.strokeColor = foregroundArcStrokeColor;
 }
 
 - (void)setFillGradient:(CGGradientRef)fillGradient

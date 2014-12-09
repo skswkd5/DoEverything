@@ -12,6 +12,8 @@
 
 + (CGGradientRef)defaultGradient
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     size_t num_locations = 2;
     CGFloat locations[2] = { 0.0, 1.0 };
     CGFloat components[8] = { .23,.56,.75,1.0,  // Start color
@@ -23,6 +25,8 @@
 
 - (id)initWithLayer:(id)layer
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     self = [super initWithLayer:layer];
     if ( self )
     {
@@ -37,6 +41,8 @@
 
 - (void)drawInContext:(CGContextRef)ctx
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     // if there is a gradient defined, draw it. Otherwise have super do the drawing
     if ( self.gradient )
     {
@@ -58,6 +64,8 @@
 
 - (void)setGradient:(CGGradientRef)gradient
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     _gradient = gradient;
     [self setNeedsDisplay];
 }

@@ -12,22 +12,27 @@
 
 - (void)setup
 {
-    _needleColor = [UIColor blackColor];
+    NSLog(@"%s", __FUNCTION__);
+    _needleColor = [UIColor greenColor];//[UIColor blackColor];
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
+    NSLog(@"%s", __FUNCTION__);
     self = [super initWithFrame:frame];
     if (self)
     {
         [self setup];
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];//[UIColor whiteColor];// [UIColor clearColor];
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {
+    //바늘 그려주기
+    NSLog(@"%s", __FUNCTION__);
+    
     CGFloat width = rect.size.width;
     CGFloat height = rect.size.height;
     
@@ -38,8 +43,8 @@
     CGContextSetStrokeColorWithColor(context, _needleColor.CGColor);
     
     CGRect circleRect = CGRectMake(0, height-width, width, width);
-    CGContextFillEllipseInRect(context, circleRect);
-    
+    CGContextFillEllipseInRect(context, circleRect);            //색 채우기
+    NSLog(@"CircleRect: %@", NSStringFromCGRect(circleRect));
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, 0, height-width/2);
@@ -48,12 +53,18 @@
     CGPathAddLineToPoint(path, NULL, 0, height-width/2);
     CGPathCloseSubpath(path);
     
+    NSLog(@"Path1: %d, %f", 0, height-width/2);
+    NSLog(@"Path2: %f, %d", width/2, 0);
+    NSLog(@"Path3: %f, %f", width, height-width/2);
+    NSLog(@"Path4: %d, %f", 0, height-width/2);
+
     CGContextAddPath(context, path);
     CGContextFillPath(context);
 }
 
 - (void)setNeedleColor:(UIColor *)needleColor
 {
+    NSLog(@"%s", __FUNCTION__);
     if ( _needleColor != needleColor )
     {
         _needleColor = needleColor;

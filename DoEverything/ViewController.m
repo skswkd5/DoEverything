@@ -10,6 +10,7 @@
 #import "DEGetValues.h"
 #import "DEGauge.h"
 
+
 @interface ViewController ()
 
 @property (nonatomic, strong) IBOutlet UIButton *btnDisk;
@@ -48,9 +49,7 @@
     NSLog(@"spaceInfo: %@", _spaceInfo);
     
 //    [DEGetValues report_memory];
-    [self showGuage];
-    
-    
+    [self showGauge];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,15 +65,28 @@
     
 }
 
-- (void)showGuage
+- (void)showGauge
 {
-    DEGauge *bigGauge = [[DEGauge alloc] initWithFrame:CGRectMake(10, 70, 150, 90)];
+    DEGauge *bigGauge = [[DEGauge alloc] initWithFrame:CGRectMake(10, 70, 200, 120)];
+    bigGauge.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:217/255 green:236/255 blue:235/255 alpha:1];
+    bigGauge.backgroundArcFillColor = [UIColor purpleColor];// [UIColor colorWithRed:243/255 green:239/255 blue:232/255 alpha:1];
+    bigGauge.backgroundArcStrokeColor = [UIColor purpleColor];//[UIColor colorWithRed:243/255 green:239/255 blue:232/255 alpha:1];
+    bigGauge.fillArcFillColor = [UIColor grayColor];//[UIColor colorWithRed:217/255 green:236/255 blue:235/255 alpha:1];
+    bigGauge.fillArcStrokeColor = [UIColor grayColor];//[UIColor colorWithRed:217/255 green:236/255 blue:235/255 alpha:1];
     bigGauge.startAngle = 0;
     bigGauge.endAngle = 180;
     bigGauge.value = 0;
     [self.view addSubview:bigGauge];
     
-    [bigGauge setValue:60 animated:YES];
+    float free = [_spaceInfo[@"Free"] floatValue];// longLongValue];
+    float total = [_spaceInfo[@"Total"] floatValue];
+    
+    float gagueValue = (total-free) / total *100;
+    NSLog(@"###  gagueValue: %f", gagueValue);
+    
+    [bigGauge setValue:gagueValue animated:YES];
 }
+
+
 
 @end

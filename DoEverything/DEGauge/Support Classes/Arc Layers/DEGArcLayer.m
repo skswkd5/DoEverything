@@ -18,14 +18,14 @@ NSString * const endAngleKey = @"endAngle";
 
 @interface DEGArcLayer()
 
-//@property (nonatomic,assign) UIColor *fillColor;
-//@property (nonatomic,assign) UIColor *strokeColor;
 
 @end
 @implementation DEGArcLayer
 
 + (BOOL)needsDisplayForKey:(NSString *)key
 {
+    NSLog(@"%s: key - %@", __FUNCTION__, key);
+    
     if ( [key isEqualToString:startAngleKey] ||
         [key isEqualToString:endAngleKey] )
     {
@@ -36,6 +36,8 @@ NSString * const endAngleKey = @"endAngle";
 
 - (id)initWithLayer:(id)layer
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     self = [super initWithLayer:layer];
     if ( self )
     {
@@ -44,9 +46,9 @@ NSString * const endAngleKey = @"endAngle";
             DEGArcLayer *otherLayer = (DEGArcLayer*)layer;
             self.startAngle = otherLayer.startAngle;
             self.endAngle = otherLayer.endAngle;
-//            self.fillColor = otherLayer.fillColor;
+            self.fillColor = otherLayer.fillColor;
             self.arcThickness = otherLayer.arcThickness;
-//            self.strokeColor = otherLayer.strokeColor;
+            self.strokeColor = otherLayer.strokeColor;
             self.strokeWidth = otherLayer.strokeWidth;
         }
     }
@@ -56,6 +58,8 @@ NSString * const endAngleKey = @"endAngle";
 #pragma mark - Public
 - (CGPoint)pointForArcEdge:(ArcEdge)edge andArcSide:(ArcSide)side
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     CGFloat width = self.bounds.size.width;
     CGFloat height = self.bounds.size.height;
     CGFloat radius = width/2;
@@ -79,6 +83,8 @@ NSString * const endAngleKey = @"endAngle";
 #pragma mark - Private
 - (CABasicAnimation*)makeAnimationForKey:(NSString *)key
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:key];
     anim.fromValue = [[self presentationLayer] valueForKey:key];
     anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
@@ -90,8 +96,11 @@ NSString * const endAngleKey = @"endAngle";
 #pragma mark - Protected
 - (void)drawArcInContext:(CGContextRef)ctx
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height);
     CGFloat radius = self.bounds.size.width/2;
+
     
     CGContextBeginPath(ctx);
     
@@ -112,6 +121,8 @@ NSString * const endAngleKey = @"endAngle";
 
 - (id<CAAction>)actionForKey:(NSString *)event
 {
+    NSLog(@"%s: event - %@", __FUNCTION__, event);
+    
     if ( [event isEqualToString:startAngleKey] ||
         [event isEqualToString:endAngleKey] )
     {
@@ -122,14 +133,16 @@ NSString * const endAngleKey = @"endAngle";
 
 - (void)drawInContext:(CGContextRef)ctx
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     if ( self.startAngle < self.endAngle )
     {
         [self drawArcInContext:ctx];
         CGContextClosePath(ctx);
 
         // Color it
-//        CGContextSetFillColorWithColor(ctx, self.fillColor.CGColor);
-//        CGContextSetStrokeColorWithColor(ctx, self.strokeColor.CGColor);
+        CGContextSetFillColorWithColor(ctx, self.fillColor.CGColor);
+        CGContextSetStrokeColorWithColor(ctx, self.strokeColor.CGColor);
         CGContextSetLineWidth(ctx, self.strokeWidth);
         
         CGContextDrawPath(ctx, kCGPathFillStroke);
