@@ -54,7 +54,7 @@
         //기기의 해상도 범위 내에, 이미지를 제대로 된 비율과 크기로 출력하도록 해준다.
         _needleView.contentScaleFactor = [[UIScreen mainScreen] scale];
     }
-    [self addSubview:_needleView];
+//    [self addSubview:_needleView];
 
     self.backgroundColor = [UIColor whiteColor];
 
@@ -110,6 +110,7 @@
 {
     //바늘 회전하기
     NSLog(@"%s", __FUNCTION__);
+    NSLog(@"바늘회전하기");
     
     CATransform3D rotatedTransform = self.needleView.layer.transform;
     rotatedTransform = CATransform3DRotate(rotatedTransform, DEGREES_TO_RADIANS(angle), 0.0f, 0.0f, 1.0f);

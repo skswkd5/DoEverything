@@ -26,6 +26,9 @@
 		A3B11DBB1A35ED7E0045F4F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B11DBA1A35ED7E0045F4F1 /* UIKit.framework */; };
 		A3B11DBD1A35ED8B0045F4F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B11DBC1A35ED8B0045F4F1 /* Foundation.framework */; };
 		A3B11DBF1A35ED950045F4F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B11DBE1A35ED950045F4F1 /* CoreGraphics.framework */; };
+		A3B32C971A372EE20003976B /* DEDiskInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B32C961A372EE20003976B /* DEDiskInfo.m */; };
+		A3B32C9B1A373A090003976B /* DEMArcLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B32C9A1A373A090003976B /* DEMArcLayer.m */; };
+		A3B32C9E1A373D870003976B /* DEArcView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B32C9D1A373D870003976B /* DEArcView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,12 @@
 		A3B11DBA1A35ED7E0045F4F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A3B11DBC1A35ED8B0045F4F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A3B11DBE1A35ED950045F4F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A3B32C951A372EE20003976B /* DEDiskInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEDiskInfo.h; path = Model/DEDiskInfo.h; sourceTree = "<group>"; };
+		A3B32C961A372EE20003976B /* DEDiskInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEDiskInfo.m; path = Model/DEDiskInfo.m; sourceTree = "<group>"; };
+		A3B32C991A373A090003976B /* DEMArcLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMArcLayer.h; path = DEMyGauge/DEMArcLayer.h; sourceTree = "<group>"; };
+		A3B32C9A1A373A090003976B /* DEMArcLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMArcLayer.m; path = DEMyGauge/DEMArcLayer.m; sourceTree = "<group>"; };
+		A3B32C9C1A373D870003976B /* DEArcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEArcView.h; path = DEMyGauge/DEArcView.h; sourceTree = "<group>"; };
+		A3B32C9D1A373D870003976B /* DEArcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEArcView.m; path = DEMyGauge/DEArcView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +139,8 @@
 		A32D9D361A27024E0079DA95 /* DoEverything */ = {
 			isa = PBXGroup;
 			children = (
+				A3B32C981A37368B0003976B /* DEMyGauge */,
+				A3B32C941A372EA30003976B /* Model */,
 				A3B11DA81A35DF130045F4F1 /* DEGauge */,
 				A32C30DE1A2EF3E5002D7381 /* DEPieChart */,
 				A32D9D3B1A27024E0079DA95 /* AppDelegate.h */,
@@ -215,6 +226,26 @@
 				A3B11DBE1A35ED950045F4F1 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3B32C941A372EA30003976B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3B32C951A372EE20003976B /* DEDiskInfo.h */,
+				A3B32C961A372EE20003976B /* DEDiskInfo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A3B32C981A37368B0003976B /* DEMyGauge */ = {
+			isa = PBXGroup;
+			children = (
+				A3B32C991A373A090003976B /* DEMArcLayer.h */,
+				A3B32C9A1A373A090003976B /* DEMArcLayer.m */,
+				A3B32C9C1A373D870003976B /* DEArcView.h */,
+				A3B32C9D1A373D870003976B /* DEArcView.m */,
+			);
+			name = DEMyGauge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,9 +356,12 @@
 				A3B11DB31A35E7A20045F4F1 /* DEGArcLayer.m in Sources */,
 				A32C30E11A2EF527002D7381 /* DEPieLabel.m in Sources */,
 				A32D9D431A27024E0079DA95 /* ViewController.m in Sources */,
+				A3B32C971A372EE20003976B /* DEDiskInfo.m in Sources */,
 				A32C30E41A2EF53F002D7381 /* DEPieAnimator.m in Sources */,
 				A32D9D401A27024E0079DA95 /* DoEverything.xcdatamodeld in Sources */,
+				A3B32C9B1A373A090003976B /* DEMArcLayer.m in Sources */,
 				A3B11DAB1A35DF130045F4F1 /* DEGauge.m in Sources */,
+				A3B32C9E1A373D870003976B /* DEArcView.m in Sources */,
 				A32D9D621A2704770079DA95 /* DEGetValues.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +484,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DoEverything/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
@@ -461,6 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DoEverything/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
