@@ -13,8 +13,8 @@
 #define DEGREES_TO_RADIANS(angle) (angle * (M_PI/180))
 
 
-NSString * const startAngleKey = @"startAngle";
-NSString * const endAngleKey = @"endAngle";
+NSString * const startAngleMyKey = @"startAngle";
+NSString * const endAngleMyKey = @"endAngle";
 
 @interface DEGArcLayer()
 
@@ -26,8 +26,8 @@ NSString * const endAngleKey = @"endAngle";
 {
     NSLog(@"%s: key - %@", __FUNCTION__, key);
     
-    if ( [key isEqualToString:startAngleKey] ||
-        [key isEqualToString:endAngleKey] )
+    if ( [key isEqualToString:startAngleMyKey] ||
+        [key isEqualToString:endAngleMyKey] )
     {
         return YES;
     }
@@ -123,8 +123,8 @@ NSString * const endAngleKey = @"endAngle";
 {
     NSLog(@"%s: event - %@", __FUNCTION__, event);
     
-    if ( [event isEqualToString:startAngleKey] ||
-        [event isEqualToString:endAngleKey] )
+    if ( [event isEqualToString:startAngleMyKey] ||
+        [event isEqualToString:endAngleMyKey] )
     {
         return [self makeAnimationForKey:event];
     }

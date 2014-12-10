@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "DEGetValues.h"
 #import "DEGauge.h"
+#import "DEMGaugeView.h"
 
 
 @interface ViewController ()
@@ -23,6 +24,7 @@
 
 @property (nonatomic, strong) NSDictionary *spaceInfo;
 
+@property (nonatomic, strong) DEMGaugeView *myGauge;
 @end
 
 @implementation ViewController
@@ -49,7 +51,8 @@
     NSLog(@"spaceInfo: %@", _spaceInfo);
     
 //    [DEGetValues report_memory];
-    [self showGauge];
+//    [self showGauge];
+    [self showMyGauge];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,6 +60,41 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)showMyGauge
+{
+    UIColor *cForBackground = [UIColor colorWithRed:253/255.0 green:174/255.0 blue:56/255.0 alpha:1];
+    UIColor *cForArc = [UIColor colorWithRed:243/255.0 green:115/255.0 blue:33/255.0 alpha:1];
+    
+    self.myGauge = [[DEMGaugeView alloc] initWithFrame:CGRectMake(10, 70, 150, 150)];
+    self.myGauge.backgroundColor = [UIColor lightGrayColor];
+    self.myGauge.backgroundArcFillColor = cForBackground;
+    self.myGauge.backgroundArcStrokeColor = cForBackground;
+    self.myGauge.fillArcFillColor =  cForArc;
+    self.myGauge.fillArcStrokeColor = cForArc;
+    self.myGauge.startAngle = 0;
+    self.myGauge.endAngle = 180;
+    self.myGauge.value = 10;
+    [self.view addSubview:self.myGauge];
+  
+    
+}
+
+- (IBAction)showUsedDisk:(id)sender
+{
+    NSLog(@"######## 시작!!");
+    
+    [self.myGauge setValue:0 animated:YES];
+    
+    float free = [_spaceInfo[@"Free"] floatValue];// longLongValue];
+    float total = [_spaceInfo[@"Total"] floatValue];
+    
+    float gagueValue = (total-free) / total *100;
+    NSLog(@"###  gagueValue: %f", gagueValue);
+    
+    [self.myGauge setValue:gagueValue animated:YES];
+
+}
 
 - (void)ShowDiskStatus
 {

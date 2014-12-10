@@ -53,7 +53,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showUsedDiskPercent:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="etz-Ct-XT0"/>
+                                    <action selector="showUsedDisk:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7i0-VD-MU0"/>
                                 </connections>
                             </button>
                         </subviews>

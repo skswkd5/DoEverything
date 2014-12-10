@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A32465351A37EDD600B49F4A /* DEMGradientArcLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A32465341A37EDD600B49F4A /* DEMGradientArcLayer.m */; };
+		A32465381A37EE0D00B49F4A /* DEMGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A32465371A37EE0D00B49F4A /* DEMGaugeView.m */; };
 		A32C30E11A2EF527002D7381 /* DEPieLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32C30E01A2EF527002D7381 /* DEPieLabel.m */; };
 		A32C30E41A2EF53F002D7381 /* DEPieAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = A32C30E31A2EF53F002D7381 /* DEPieAnimator.m */; };
 		A32D9D3A1A27024E0079DA95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D9D391A27024E0079DA95 /* main.m */; };
@@ -28,7 +30,6 @@
 		A3B11DBF1A35ED950045F4F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B11DBE1A35ED950045F4F1 /* CoreGraphics.framework */; };
 		A3B32C971A372EE20003976B /* DEDiskInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B32C961A372EE20003976B /* DEDiskInfo.m */; };
 		A3B32C9B1A373A090003976B /* DEMArcLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B32C9A1A373A090003976B /* DEMArcLayer.m */; };
-		A3B32C9E1A373D870003976B /* DEArcView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B32C9D1A373D870003976B /* DEArcView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,10 @@
 
 /* Begin PBXFileReference section */
 		A324466F1A36B4600066EDE0 /* DOEverything-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DOEverything-Prefix.pch"; sourceTree = "<group>"; };
+		A32465331A37EDD600B49F4A /* DEMGradientArcLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMGradientArcLayer.h; path = DEMyGauge/DEMGradientArcLayer.h; sourceTree = "<group>"; };
+		A32465341A37EDD600B49F4A /* DEMGradientArcLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMGradientArcLayer.m; path = DEMyGauge/DEMGradientArcLayer.m; sourceTree = "<group>"; };
+		A32465361A37EE0D00B49F4A /* DEMGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMGaugeView.h; path = DEMyGauge/DEMGaugeView.h; sourceTree = "<group>"; };
+		A32465371A37EE0D00B49F4A /* DEMGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMGaugeView.m; path = DEMyGauge/DEMGaugeView.m; sourceTree = "<group>"; };
 		A32C30DF1A2EF527002D7381 /* DEPieLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEPieLabel.h; path = DEPieChart/DEPieLabel.h; sourceTree = "<group>"; };
 		A32C30E01A2EF527002D7381 /* DEPieLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEPieLabel.m; path = DEPieChart/DEPieLabel.m; sourceTree = "<group>"; };
 		A32C30E21A2EF53F002D7381 /* DEPieAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEPieAnimator.h; path = DEPieChart/DEPieAnimator.h; sourceTree = "<group>"; };
@@ -80,8 +85,6 @@
 		A3B32C961A372EE20003976B /* DEDiskInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEDiskInfo.m; path = Model/DEDiskInfo.m; sourceTree = "<group>"; };
 		A3B32C991A373A090003976B /* DEMArcLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMArcLayer.h; path = DEMyGauge/DEMArcLayer.h; sourceTree = "<group>"; };
 		A3B32C9A1A373A090003976B /* DEMArcLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMArcLayer.m; path = DEMyGauge/DEMArcLayer.m; sourceTree = "<group>"; };
-		A3B32C9C1A373D870003976B /* DEArcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEArcView.h; path = DEMyGauge/DEArcView.h; sourceTree = "<group>"; };
-		A3B32C9D1A373D870003976B /* DEArcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEArcView.m; path = DEMyGauge/DEArcView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,8 +245,10 @@
 			children = (
 				A3B32C991A373A090003976B /* DEMArcLayer.h */,
 				A3B32C9A1A373A090003976B /* DEMArcLayer.m */,
-				A3B32C9C1A373D870003976B /* DEArcView.h */,
-				A3B32C9D1A373D870003976B /* DEArcView.m */,
+				A32465331A37EDD600B49F4A /* DEMGradientArcLayer.h */,
+				A32465341A37EDD600B49F4A /* DEMGradientArcLayer.m */,
+				A32465361A37EE0D00B49F4A /* DEMGaugeView.h */,
+				A32465371A37EE0D00B49F4A /* DEMGaugeView.m */,
 			);
 			name = DEMyGauge;
 			sourceTree = "<group>";
@@ -354,14 +359,15 @@
 				A3B11DB61A35E7D50045F4F1 /* DEGGradientArcLayer.m in Sources */,
 				A32D9D3A1A27024E0079DA95 /* main.m in Sources */,
 				A3B11DB31A35E7A20045F4F1 /* DEGArcLayer.m in Sources */,
+				A32465381A37EE0D00B49F4A /* DEMGaugeView.m in Sources */,
 				A32C30E11A2EF527002D7381 /* DEPieLabel.m in Sources */,
 				A32D9D431A27024E0079DA95 /* ViewController.m in Sources */,
 				A3B32C971A372EE20003976B /* DEDiskInfo.m in Sources */,
 				A32C30E41A2EF53F002D7381 /* DEPieAnimator.m in Sources */,
 				A32D9D401A27024E0079DA95 /* DoEverything.xcdatamodeld in Sources */,
+				A32465351A37EDD600B49F4A /* DEMGradientArcLayer.m in Sources */,
 				A3B32C9B1A373A090003976B /* DEMArcLayer.m in Sources */,
 				A3B11DAB1A35DF130045F4F1 /* DEGauge.m in Sources */,
-				A3B32C9E1A373D870003976B /* DEArcView.m in Sources */,
 				A32D9D621A2704770079DA95 /* DEGetValues.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
