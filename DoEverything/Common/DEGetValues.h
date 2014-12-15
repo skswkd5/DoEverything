@@ -22,9 +22,14 @@
 + (long long)freeDiskSpace;
 + (long long)usedDiskSpace;
 
++ (NSNumber *)totalDiskSize;
++ (NSNumber *)freeDiskSize;
+
 + (void)report_memory;
 //+ (CGFloat)totalDiskSpaceInBytes;
 //+ (CGFloat)freeDiskSpaceInBytes ;
 //+ (CGFloat)usedDiskSpaceInBytes;
+
++ (void)getMultimediaInfo;
 
 @end

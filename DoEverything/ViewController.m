@@ -9,22 +9,21 @@
 #import "ViewController.h"
 #import "DEGetValues.h"
 #import "DEGauge.h"
+#import "DEDiskInfo.h"
 #import "DEMGaugeView.h"
 
 
 @interface ViewController ()
 
-@property (nonatomic, strong) IBOutlet UIButton *btnDisk;
-@property (nonatomic, strong) IBOutlet UIButton *btnMemory;
+@property (nonatomic, strong) IBOutlet UIButton *btnAll;
 @property (nonatomic, strong) IBOutlet UIButton *btnPhotos;
 @property (nonatomic, strong) IBOutlet UIButton *btnVideos;
+@property (nonatomic, strong) IBOutlet UIButton *btnLogs;
+@property (nonatomic, strong) IBOutlet UIButton *btnSetting;
 
-@property (nonatomic, strong) IBOutlet UILabel *lblTotal;
-@property (nonatomic, strong) IBOutlet UILabel *lblUsed;
+@property (nonatomic, strong) DEDiskInfo *diskInfo;
+@property (nonatomic, strong) IBOutlet DEMGaugeView *myGauge;
 
-@property (nonatomic, strong) NSDictionary *spaceInfo;
-
-@property (nonatomic, strong) DEMGaugeView *myGauge;
 @end
 
 @implementation ViewController
@@ -33,27 +32,12 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1]];
+    _diskInfo = [[DEDiskInfo alloc] init];
+    [self setUIControllers];
     
-    float total = [DEGetValues disSpace];
-    uint64_t total2 = [DEGetValues getFreeDiskSpace];
-    
-//    uint64_t totalPhotos = [DEGetValues getSpaceForPhotos];
-//    uint64_t totalMovies = [DEGetValues getSpaceForVideos];
-    long long totalSpace = [DEGetValues totalDiskSpace];
-    long long freeSpace = [DEGetValues freeDiskSpace];
-    
-    NSString *totalWithUnit = [DEGetValues memoryFormatter:totalSpace];
-    NSString *freeWithUnit = [DEGetValues memoryFormatter:freeSpace];
-    
-    _spaceInfo = @{@"Total": [NSNumber numberWithLongLong:totalSpace], @"Free":[NSNumber numberWithLongLong:freeSpace]
-                   , @"TotalWithUnit": totalWithUnit, @"FreeWithUnit": freeWithUnit};
-    
-    NSLog(@"spaceInfo: %@", _spaceInfo);
-    
-//    [DEGetValues report_memory];
-//    [self showGauge];
     [self showMyGauge];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -61,74 +45,74 @@
 }
 
 
+- (void)setUIControllers
+{
+    CGFloat screenWith = self.view.bounds.size.width;
+    CGFloat screenHeight = self.view.bounds.size.height;
+    
+    self.myGauge.frame = CGRectMake(10, 10, 200, 100);
+    
+    CGFloat btnWidth = (screenWith - 40)/ 3;
+    CGFloat btnHeight = 100;
+    
+    self.btnAll.frame = CGRectMake(10, self.myGauge.frame.origin.y + self.myGauge.frame.size.height + 10, btnWidth, btnHeight);
+    self.btnPhotos.frame = CGRectMake(10 + btnWidth + 10, self.btnAll.frame.origin.y, btnWidth, btnHeight);
+    self.btnVideos.frame = CGRectMake(10 + btnWidth + 10 + btnWidth + 10, self.btnAll.frame.origin.y, btnWidth, btnHeight);
+    
+
+    [self.btnAll setBackgroundImage:[[UIImage imageNamed:@"btn_tutorial_n"]
+                                      resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateNormal];
+    [self.btnPhotos setBackgroundImage:[[UIImage imageNamed:@"btn_tutorial_n"]
+                                        resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateNormal];
+    [self.btnVideos setBackgroundImage:[[UIImage imageNamed:@"btn_tutorial_n"]
+                                        resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateNormal];
+    
+    [self.btnAll setBackgroundImage:[[UIImage imageNamed:@"btn_tutorial_p"]
+                                     resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateHighlighted];
+    [self.btnPhotos setBackgroundImage:[[UIImage imageNamed:@"btn_tutorial_p"]
+                                        resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateHighlighted];
+    [self.btnVideos setBackgroundImage:[[UIImage imageNamed:@"btn_tutorial_p"]
+                                        resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateHighlighted];
+    
+    
+    btnWidth = (screenWith - 30)/ 2;
+    btnHeight = 100;
+    
+    self.btnLogs.frame = CGRectMake(10, self.btnAll.frame.origin.y + self.btnAll.frame.size.height + 10, btnWidth, btnHeight);
+    self.btnSetting.frame = CGRectMake(10 + btnWidth + 10, self.btnLogs.frame.origin.y, btnWidth, btnHeight);
+    
+    [self.btnLogs setBackgroundImage:[[UIImage imageNamed:@"btn_red01_n"]
+                                     resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateNormal];
+    [self.btnSetting setBackgroundImage:[[UIImage imageNamed:@"btn_red01_n"]
+                                        resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateNormal];
+   
+    [self.btnLogs setBackgroundImage:[[UIImage imageNamed:@"btn_red01_p"]
+                                        resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateHighlighted];
+    [self.btnSetting setBackgroundImage:[[UIImage imageNamed:@"btn_red01_p"]
+                                        resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateHighlighted];
+
+    [self.view setNeedsDisplay];
+    
+}
+
+#pragma mark Local Functions
 - (void)showMyGauge
 {
     UIColor *cForBackground = [UIColor colorWithRed:253/255.0 green:174/255.0 blue:56/255.0 alpha:1];
     UIColor *cForArc = [UIColor colorWithRed:243/255.0 green:115/255.0 blue:33/255.0 alpha:1];
     
-    self.myGauge = [[DEMGaugeView alloc] initWithFrame:CGRectMake(10, 70, 150, 150)];
-    self.myGauge.backgroundColor = [UIColor lightGrayColor];
+    self.myGauge.backgroundColor = [UIColor clearColor];
     self.myGauge.backgroundArcFillColor = cForBackground;
     self.myGauge.backgroundArcStrokeColor = cForBackground;
     self.myGauge.fillArcFillColor =  cForArc;
     self.myGauge.fillArcStrokeColor = cForArc;
     self.myGauge.startAngle = 0;
     self.myGauge.endAngle = 180;
-    self.myGauge.value = 10;
-    [self.view addSubview:self.myGauge];
-  
     
-}
-
-- (IBAction)showUsedDisk:(id)sender
-{
-    NSLog(@"######## 시작!!");
+    //Disk 정보
+    float usedValue = [self.diskInfo.usedPercent floatValue];
+    [self.myGauge setValue:usedValue animated:YES];
     
-    [self.myGauge setValue:0 animated:YES];
-    
-    float free = [_spaceInfo[@"Free"] floatValue];// longLongValue];
-    float total = [_spaceInfo[@"Total"] floatValue];
-    
-    float gagueValue = (total-free) / total *100;
-    NSLog(@"###  gagueValue: %f", gagueValue);
-    
-    [self.myGauge setValue:gagueValue animated:YES];
-
-}
-
-- (void)ShowDiskStatus
-{
-    UIView *pieView = [[UIView alloc] initWithFrame:CGRectMake(10, 30, 150, 150)];
-    [pieView setBackgroundColor:[UIColor colorWithRed:217/255 green:255 blue:255 alpha:1]];
-    
-}
-
-- (void)showGauge
-{
-//    UIColor *cForBackground = [UIColor colorWithRed:253/255.0 green:111/255.0 blue:113/255.0 alpha:1];
-//    UIColor *cForArc = [UIColor colorWithRed:192/255.0 green:68/255.0 blue:71/255.0 alpha:1];
-
-    UIColor *cForBackground = [UIColor colorWithRed:253/255.0 green:174/255.0 blue:56/255.0 alpha:1];
-    UIColor *cForArc = [UIColor colorWithRed:243/255.0 green:115/255.0 blue:33/255.0 alpha:1];
-    
-    DEGauge *bigGauge = [[DEGauge alloc] initWithFrame:CGRectMake(10, 70, 200, 120)];
-    bigGauge.backgroundColor = [UIColor clearColor];
-    bigGauge.backgroundArcFillColor = cForBackground;
-    bigGauge.backgroundArcStrokeColor = cForBackground;
-    bigGauge.fillArcFillColor =  cForArc;
-    bigGauge.fillArcStrokeColor = cForArc;
-    bigGauge.startAngle = 0;
-    bigGauge.endAngle = 180;
-    bigGauge.value = 0;
-    [self.view addSubview:bigGauge];
-    
-    float free = [_spaceInfo[@"Free"] floatValue];// longLongValue];
-    float total = [_spaceInfo[@"Total"] floatValue];
-    
-    float gagueValue = (total-free) / total *100;
-    NSLog(@"###  gagueValue: %f", gagueValue);
-    
-    [bigGauge setValue:gagueValue animated:YES];
 }
 
 

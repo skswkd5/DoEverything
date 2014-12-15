@@ -61,7 +61,7 @@
     
 //    CGFloat needleWidth = width * NEEDLE_BASE_WIDTH_RATIO;
 //    _needleView = [[MSNeedleView alloc] initWithFrame:CGRectMake(0,
-//                                                                 0,
+//                                                                 0, 
 //                                                                 needleWidth,
 //                                                                 width/2+4)];
 //    if ( [_needleView respondsToSelector:@selector(contentScaleFactor)] )

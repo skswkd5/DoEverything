@@ -10,8 +10,8 @@
 
 #import <sys/param.h>
 #import <sys/mount.h>
-
 #import <mach/mach.h>
+
 
 #define MB (1024*1024)
 #define GB (MB*1024)
@@ -161,7 +161,7 @@
     NSDictionary *dictionary08 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths08 lastObject] error:&error];
     NSDictionary *dictionary09 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths09 lastObject] error:&error];
     NSDictionary *dictionary010 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths010 lastObject] error:&error];
-    NSDictionary *dictionary011 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths011 lastObject] error:&error];
+    NSDictionary *dictionary011 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths011 firstObject] error:&error];
     NSDictionary *dictionary012 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths012 lastObject] error:&error];
     NSDictionary *dictionary013 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths013 lastObject] error:&error];
     
@@ -184,7 +184,8 @@
     NSDictionary *dictionary15 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths15 lastObject] error:&error];
     NSDictionary *dictionary110 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths110 lastObject] error:&error];
     NSDictionary *dictionary111 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths111 lastObject] error:&error];
-    NSDictionary *dictionary112 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths112 lastObject] error:&error];
+    NSDictionary *dictionary112 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths112 firstObject] error:&error];
+    NSDictionary *dictionary112_1 = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths112 lastObject] error:&error];
     
     NSLog(@"dictionary11: %@", dictionary11 == nil? @"nil":dictionary11);
     NSLog(@"dictionary12: %@", dictionary12 == nil? @"nil":dictionary12);
@@ -193,6 +194,72 @@
     NSLog(@"dictionary110: %@", dictionary110 == nil? @"nil":dictionary110);
     NSLog(@"dictionary111: %@", dictionary111 == nil? @"nil":dictionary111);
     NSLog(@"dictionary112: %@", dictionary112 == nil? @"nil":dictionary112);
+    NSLog(@"dictionary112_1: %@", dictionary112 == nil? @"nil":dictionary112_1);
+    
+    if(dictionary11)
+    {
+        NSNumber *fileSystemSizeInBytes = [dictionary11 objectForKey:NSFileSystemSize];
+        NSNumber *freeFileSystemSizeInBytes = [dictionary11 objectForKey:NSFileSystemFreeSize];
+        
+        totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
+        totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
+        
+        NSLog(@"dictionary11(/Applications) - systemSize: %@", [self memoryFormatter:totalSpace]);
+        
+    }
+    else
+    {
+        NSLog(@"Error Obtaining System Memory Info: Domain = %@, Code= %ld", [error domain], (long)[error code])  ;
+    }
+    
+    if(dictionary15)
+    {
+        NSNumber *fileSystemSizeInBytes = [dictionary15 objectForKey:NSFileSystemSize];
+        NSNumber *freeFileSystemSizeInBytes = [dictionary15 objectForKey:NSFileSystemFreeSize];
+        
+        totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
+        totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
+        
+        NSLog(@"dictionary15(/Library/Application Support) - systemSize:  %@", [self memoryFormatter:totalSpace]);
+        
+    }
+    else
+    {
+        NSLog(@"Error Obtaining System Memory Info: Domain = %@, Code= %ld", [error domain], (long)[error code])  ;
+    }
+    
+    if(dictionary112)
+    {
+        NSNumber *fileSystemSizeInBytes = [dictionary112 objectForKey:NSFileSystemSize];
+        NSNumber *freeFileSystemSizeInBytes = [dictionary112 objectForKey:NSFileSystemFreeSize];
+        
+        totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
+        totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
+        
+        NSLog(@"dictionary112(/Library) - systemSize:  %@", [self memoryFormatter:totalSpace]);
+        
+    }
+    else
+    {
+        NSLog(@"Error Obtaining System Memory Info: Domain = %@, Code= %ld", [error domain], (long)[error code])  ;
+    }
+    
+    if(dictionary112_1)
+    {
+        NSNumber *fileSystemSizeInBytes = [dictionary112_1 objectForKey:NSFileSystemSize];
+        NSNumber *freeFileSystemSizeInBytes = [dictionary112_1 objectForKey:NSFileSystemFreeSize];
+        
+        totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
+        totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
+        
+        NSLog(@"dictionary112(/Developer) - systemSize:  %@", [self memoryFormatter:totalSpace]);
+        
+    }
+    else
+    {
+        NSLog(@"Error Obtaining System Memory Info: Domain = %@, Code= %ld", [error domain], (long)[error code])  ;
+    }
+
     
     
 //    if(dictionary)
@@ -264,19 +331,28 @@
 
 #pragma mark - Methods
 
-+ (long long)totalDiskSpace {
-    long long space = [[[[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil] objectForKey:NSFileSystemSize] longLongValue];
-    return space; //[self memoryFormatter:space];
++ (long long)totalDiskSpace:(NSNumber *)size
+{
+    long long space = [size longLongValue];
+    return space;
 }
 
-+ (long long)freeDiskSpace {
-    long long freeSpace = [[[[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil] objectForKey:NSFileSystemFreeSize] longLongValue];
-    return freeSpace;//[self memoryFormatter:freeSpace];
++ (long long)freeDiskSpace:(NSNumber *)size
+{
+    long long freeSpace = [size longLongValue];
+    return freeSpace;
 }
 
-//+ (NSString *)usedDiskSpace {
-//    return [self memoryFormatter:[self usedDiskSpaceInBytes]];
-//}
++ (NSNumber *)totalDiskSize {
+    NSNumber *space = [[[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil] objectForKey:NSFileSystemSize];
+    return space;
+}
+
++ (NSNumber *)freeDiskSize {
+    NSNumber *freeSpace = [[[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil] objectForKey:NSFileSystemFreeSize];
+    return freeSpace;
+}
+
 
 //+ (CGFloat)totalDiskSpaceInBytes {
 //    long long space = [[[[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil] objectForKey:NSFileSystemSize] longLongValue];
@@ -356,6 +432,8 @@
     last_resident_size = info.resident_size;
     last_greatest = greatest;
 }
+
+
 
 
 @end

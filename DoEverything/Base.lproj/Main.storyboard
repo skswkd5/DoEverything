@@ -17,44 +17,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sl-Dn-gdc">
-                                <rect key="frame" x="46" y="410" width="46" height="30"/>
-                                <state key="normal" title="비디오">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FK4-ra-8Gh">
-                                <rect key="frame" x="210" y="424" width="46" height="30"/>
-                                <state key="normal" title="사진">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCw-xn-3a9">
-                                <rect key="frame" x="203" y="366" width="46" height="30"/>
-                                <state key="normal" title="메모리">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZ2-lA-dvS">
-                                <rect key="frame" x="62" y="237" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVE-uQ-076">
-                                <rect key="frame" x="62" y="289" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yg-I4-n7Q">
-                                <rect key="frame" x="25" y="259" width="67" height="49"/>
-                                <state key="normal" title="용량">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdu-yJ-xqW">
+                                <rect key="frame" x="10" y="240" width="93" height="100"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="갤러리" backgroundImage="btn_tutorial_n.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showUsedDisk:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7i0-VD-MU0"/>
+                                    <segue destination="hHA-qj-Gwx" kind="show" id="JY0-JJ-lwj"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7Z-dO-fiQ">
+                                <rect key="frame" x="113" y="240" width="93" height="100"/>
+                                <state key="normal" title="사진" backgroundImage="btn_tutorial_n.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjH-7p-npA">
+                                <rect key="frame" x="216" y="240" width="93" height="100"/>
+                                <state key="normal" title="동영상" backgroundImage="btn_tutorial_n.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wd7-ne-xMA">
+                                <rect key="frame" x="10" y="350" width="140" height="100"/>
+                                <state key="normal" title="이력조회" backgroundImage="btn_red01_n.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="8Ut-lI-K6q" customClass="DEMGaugeView">
+                                <rect key="frame" x="10" y="80" width="300" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8W-zC-E1N">
+                                <rect key="frame" x="160" y="350" width="140" height="100"/>
+                                <state key="normal" title="설정" backgroundImage="btn_red01_n.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -63,10 +62,37 @@
                     <navigationItem key="navigationItem" id="nvR-2D-tZV"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="btnAll" destination="pdu-yJ-xqW" id="YGO-os-hcj"/>
+                        <outlet property="btnLogs" destination="wd7-ne-xMA" id="jcr-uK-fvS"/>
+                        <outlet property="btnPhotos" destination="B7Z-dO-fiQ" id="dTe-vk-GVS"/>
+                        <outlet property="btnSetting" destination="L8W-zC-E1N" id="qY0-a2-HT5"/>
+                        <outlet property="btnVideos" destination="LjH-7p-npA" id="Pbs-Wo-dqv"/>
+                        <outlet property="myGauge" destination="8Ut-lI-K6q" id="TMo-Gf-NSU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160" y="380"/>
+            <point key="canvasLocation" x="181" y="397"/>
+        </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="0Wz-LP-lWL">
+            <objects>
+                <viewController id="hHA-qj-Gwx" customClass="DEGalleryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cer-ja-7lc"/>
+                        <viewControllerLayoutGuide type="bottom" id="iLG-a2-sn2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qwk-xV-W8b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wQf-E5-QlU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R6z-W4-T3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-175" y="1094.9999999999998"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OTR-mU-4nx">
@@ -87,4 +113,8 @@
             <point key="canvasLocation" x="-297" y="380"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_red01_n.png" width="145" height="37"/>
+        <image name="btn_tutorial_n.png" width="70" height="37"/>
+    </resources>
 </document>
