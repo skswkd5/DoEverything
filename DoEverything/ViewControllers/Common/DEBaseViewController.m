@@ -1,29 +1,34 @@
 //
-//  DEGalleryViewController.m
+//  DEBaseViewController.m
 //  DoEverything
 //
-//  Created by 김지선 on 2014. 12. 15..
+//  Created by 김지선 on 2014. 12. 16..
 //  Copyright (c) 2014년 skswkd. All rights reserved.
 //
 
-#import "DEGalleryViewController.h"
+#import "DEBaseViewController.h"
 
-@interface DEGalleryViewController ()
+
+@interface DEBaseViewController ()
+
 
 @end
 
-@implementation DEGalleryViewController
+@implementation DEBaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 /*
@@ -35,5 +40,23 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark initialization
+- (void)initializingData
+{
+    [self setDiskInfo];
+    [self setMediaInfo];
+}
+
+- (void)setDiskInfo
+{
+    _diskInfo = [[DEDiskInfo alloc] init];
+    
+}
+
+- (void)setMediaInfo
+{
+    _mediaInfo = [[DEMultimediaInfo alloc] init];
+}
 
 @end

@@ -8,7 +8,6 @@
 
 #import "DEDiskInfo.h"
 #import "DEGetValues.h"
-#import "DEMultimediaInfo.h"
 
 @implementation DEDiskInfo
 
@@ -55,9 +54,6 @@
     _usedWithUnit = [DEGetValues memoryFormatter:used];
     double  usedP = [self getPercentValue:used totalValue:total];
     _usedPercent = [[NSString alloc] initWithFormat:@"%.2f", usedP];
-    
-    [DEMultimediaInfo getMultimediaInfo];
-
     
 }
 

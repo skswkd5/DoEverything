@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DEGalleryViewController : UIViewController
+@interface DEGalleryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

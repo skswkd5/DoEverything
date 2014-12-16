@@ -7,13 +7,40 @@
 //
 
 #import "DEMultimediaInfo.h"
+@interface DEMultimediaInfo()
+
+@end
 
 @implementation DEMultimediaInfo
 
-+ (void)getMultimediaInfo
+
+static DEMultimediaInfo *sharedDEMultimediaInfo = nil;
+
++ (DEMultimediaInfo *)sharedDEMultimediaInfo
+{
+    static dispatch_once_t pred;
+    dispatch_once(&pred, ^{
+        sharedDEMultimediaInfo = [[self alloc] init];
+    });
+    
+    return sharedDEMultimediaInfo;
+}
+
+- (id)init
+{
+    self = [super init];
+    if(self) {
+        [self setMultimediaInfo];
+    }
+    return self;
+}
+
+
+- (void)setMultimediaInfo
 {
     __block int videoCount = 0;
     __block int photoCount = 0;
+    __block NSMutableArray *arrGroups = [[NSMutableArray alloc] init];
     
     ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc]init];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -21,63 +48,49 @@
         void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop)
         {
             if (group == nil) {
-                // enumeration complete
+                
+                _numberOfAllMovies = [NSNumber numberWithInt:videoCount];
+                _numberOfAllPictures = [NSNumber numberWithInt:photoCount];
+                _assetGroups = [NSArray arrayWithArray:arrGroups];
+                
                 return;
             }
-
-            NSString *groupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
-            NSUInteger Type = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
             
-            int total = group.numberOfAssets;
+            NSString *groupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
+            NSNumber *Type = [NSNumber numberWithInt:[[group valueForProperty:ALAssetsGroupPropertyType] intValue]];
+            NSNumber *total = [NSNumber numberWithInt:group.numberOfAssets];
+            
+            
             [group setAssetsFilter:[ALAssetsFilter allVideos]];
             int groupVideoCount = group.numberOfAssets;
+            int groupImageCount = [total intValue] - groupVideoCount;
             
             videoCount += groupVideoCount;
-            photoCount += total - groupVideoCount;
+            photoCount += groupImageCount;
+            
+            NSDictionary *dicGroup = @{@"AlbumName":groupPropertyName, @"Type":Type,
+                                              @"TotalCount":[NSNumber numberWithInt:groupImageCount],
+                                              @"ImageCount":[NSNumber numberWithInt:groupImageCount],
+                                              @"VideoCount":[NSNumber numberWithInt:groupVideoCount]};
+            
+            [arrGroups addObject:dicGroup];
             
             NSLog(@"group: %@", group);
-            NSLog(@"group PropertyName: %@ type: %d", groupPropertyName, Type);
-            NSLog(@"groupVideoCount : %d", groupVideoCount);
-            NSLog(@"groupPhotoCount : %d", total - groupVideoCount);
+            NSLog(@"dicGroup: %@", dicGroup);
+            NSLog(@"arrGroups: %@", arrGroups);
             
-            NSLog(@"\ntotal videoCount = %d", videoCount);
-            NSLog(@"total photoCount = %d", photoCount);
-            
-//            if (group == nil) {
-//                   return;
-//            }
-//            
-//           // added fix for camera albums order
-//           NSString *sGroupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
-//           NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
-//           
-//           if ([[sGroupPropertyName lowercaseString] isEqualToString:@"camera roll"] && nType == ALAssetsGroupSavedPhotos) {
-//               [self.assetGroups insertObject:group atIndex:0];
-//               //								   [self.assetGroups insertObject:group atIndex:0];// = group;
-//               //self.assetGroup = group;//[self performSelectorOnMainThread:@selector(preparePhotos) withObject:nil waitUntilDone:YES];
-//               // [self performSelectorInBackground:@selector(preparePhotos) withObject:nil];
-//               [self performSelectorOnMainThread:@selector(reloadTable) withObject:nil waitUntilDone:YES];
-//           }
-//           //							   else {
-//           //								   [self.assetGroups addObject:group];
-//           //							   }
-//           
-//           // Reload albums
-//           //[self performSelectorOnMainThread:@selector(preparePhotos) withObject:nil waitUntilDone:YES];
-//            
-//           };
         };
         void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
+            NSLog(@"assetGroupEnumberatorFailure Error!!");
         };
         
         // Enumerate Albums
         [assetLibrary enumerateGroupsWithTypes:ALAssetsGroupAll
                                     usingBlock:assetGroupEnumerator
                                   failureBlock:assetGroupEnumberatorFailure];
-
-        });
-    
-
+        
+    });
 }
+
 
 @end

@@ -11,6 +11,8 @@
 #import "DEGauge.h"
 #import "DEDiskInfo.h"
 #import "DEMGaugeView.h"
+#import "DEMultimediaInfo.h"
+#import "DEAlbumListViewController.h"
 
 
 @interface ViewController ()
@@ -21,7 +23,6 @@
 @property (nonatomic, strong) IBOutlet UIButton *btnLogs;
 @property (nonatomic, strong) IBOutlet UIButton *btnSetting;
 
-@property (nonatomic, strong) DEDiskInfo *diskInfo;
 @property (nonatomic, strong) IBOutlet DEMGaugeView *myGauge;
 
 @end
@@ -32,9 +33,9 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1]];
-    _diskInfo = [[DEDiskInfo alloc] init];
-    [self setUIControllers];
+    [self initializingData];
     
+    [self setUIControllers];
     [self showMyGauge];
 }
 
@@ -42,6 +43,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
 }
 
 
@@ -91,6 +99,19 @@
     [self.btnSetting setBackgroundImage:[[UIImage imageNamed:@"btn_red01_p"]
                                         resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)] forState:UIControlStateHighlighted];
 
+    if(self.mediaInfo.assetGroups.count > 0)
+    {
+        NSMutableString *strBtnTitle = [[NSMutableString alloc] initWithString:self.btnAll.titleLabel.text];
+        NSString *detailedInfo = [NSString stringWithFormat:@"\n 앨범수: %d \n이미지수: %d \n동영상:%d",
+                                  self.mediaInfo.assetGroups.count,
+                                  [self.mediaInfo.numberOfAllPictures intValue],
+                                  [self.mediaInfo.numberOfAllMovies intValue]];
+        [strBtnTitle appendString:detailedInfo];
+        NSLog(@"버튼 타이틀: %@", strBtnTitle);
+        
+        self.btnAll.titleLabel.text = strBtnTitle;
+    }
+    
     [self.view setNeedsDisplay];
     
 }
@@ -114,6 +135,10 @@
     [self.myGauge setValue:usedValue animated:YES];
     
 }
+
+
+#pragma mark IBAction Functions
+
 
 
 

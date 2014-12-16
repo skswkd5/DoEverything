@@ -14,13 +14,15 @@
 		A329168F1A3EAF8900824A39 /* DEMultimediaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A329168E1A3EAF8900824A39 /* DEMultimediaInfo.m */; };
 		A32916951A3EAFB000824A39 /* DEDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A32916941A3EAFB000824A39 /* DEDeviceInfo.m */; };
 		A32916991A3EBCC700824A39 /* DEImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A32916981A3EBCC700824A39 /* DEImageInfo.m */; };
-		A329169F1A3EC25500824A39 /* DEGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A329169E1A3EC25500824A39 /* DEGalleryViewController.m */; };
 		A32916A31A3EC67600824A39 /* btn_tutorial_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A32916A11A3EC67600824A39 /* btn_tutorial_n@2x.png */; };
 		A32916A41A3EC67600824A39 /* btn_tutorial_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A32916A21A3EC67600824A39 /* btn_tutorial_p@2x.png */; };
 		A32916A71A3EC8DD00824A39 /* btn_red01_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A32916A51A3EC8DD00824A39 /* btn_red01_n@2x.png */; };
 		A32916A81A3EC8DD00824A39 /* btn_red01_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A32916A61A3EC8DD00824A39 /* btn_red01_p@2x.png */; };
 		A32C30E11A2EF527002D7381 /* DEPieLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32C30E01A2EF527002D7381 /* DEPieLabel.m */; };
 		A32C30E41A2EF53F002D7381 /* DEPieAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = A32C30E31A2EF53F002D7381 /* DEPieAnimator.m */; };
+		A32CAAF81A3FF82C008AD4C9 /* DEAlbumListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32CAAF71A3FF82C008AD4C9 /* DEAlbumListViewController.m */; };
+		A32CAAFB1A3FF84A008AD4C9 /* DEGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32CAAFA1A3FF84A008AD4C9 /* DEGalleryViewController.m */; };
+		A32CAB061A401586008AD4C9 /* DEBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32CAB051A401586008AD4C9 /* DEBaseViewController.m */; };
 		A32D9D3A1A27024E0079DA95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D9D391A27024E0079DA95 /* main.m */; };
 		A32D9D3D1A27024E0079DA95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D9D3C1A27024E0079DA95 /* AppDelegate.m */; };
 		A32D9D401A27024E0079DA95 /* DoEverything.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A32D9D3E1A27024E0079DA95 /* DoEverything.xcdatamodeld */; };
@@ -66,8 +68,6 @@
 		A32916941A3EAFB000824A39 /* DEDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEDeviceInfo.m; path = Common/DEDeviceInfo.m; sourceTree = "<group>"; };
 		A32916971A3EBCC700824A39 /* DEImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEImageInfo.h; path = Model/DEImageInfo.h; sourceTree = "<group>"; };
 		A32916981A3EBCC700824A39 /* DEImageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEImageInfo.m; path = Model/DEImageInfo.m; sourceTree = "<group>"; };
-		A329169D1A3EC25500824A39 /* DEGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEGalleryViewController.h; sourceTree = "<group>"; };
-		A329169E1A3EC25500824A39 /* DEGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEGalleryViewController.m; sourceTree = "<group>"; };
 		A32916A11A3EC67600824A39 /* btn_tutorial_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_tutorial_n@2x.png"; sourceTree = "<group>"; };
 		A32916A21A3EC67600824A39 /* btn_tutorial_p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_tutorial_p@2x.png"; sourceTree = "<group>"; };
 		A32916A51A3EC8DD00824A39 /* btn_red01_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_red01_n@2x.png"; sourceTree = "<group>"; };
@@ -76,6 +76,15 @@
 		A32C30E01A2EF527002D7381 /* DEPieLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEPieLabel.m; path = DEPieChart/DEPieLabel.m; sourceTree = "<group>"; };
 		A32C30E21A2EF53F002D7381 /* DEPieAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEPieAnimator.h; path = DEPieChart/DEPieAnimator.h; sourceTree = "<group>"; };
 		A32C30E31A2EF53F002D7381 /* DEPieAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEPieAnimator.m; path = DEPieChart/DEPieAnimator.m; sourceTree = "<group>"; };
+		A32CAAF61A3FF82C008AD4C9 /* DEAlbumListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEAlbumListViewController.h; path = DEGallery/DEAlbumListViewController.h; sourceTree = "<group>"; };
+		A32CAAF71A3FF82C008AD4C9 /* DEAlbumListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEAlbumListViewController.m; path = DEGallery/DEAlbumListViewController.m; sourceTree = "<group>"; };
+		A32CAAF91A3FF84A008AD4C9 /* DEGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEGalleryViewController.h; path = DEGallery/DEGalleryViewController.h; sourceTree = "<group>"; };
+		A32CAAFA1A3FF84A008AD4C9 /* DEGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEGalleryViewController.m; path = DEGallery/DEGalleryViewController.m; sourceTree = "<group>"; };
+		A32CAAFE1A400FC5008AD4C9 /* DEMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DEMacro.h; path = Common/Headers/DEMacro.h; sourceTree = "<group>"; };
+		A32CAAFF1A400FE4008AD4C9 /* DEConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DEConstants.h; path = Common/Headers/DEConstants.h; sourceTree = "<group>"; };
+		A32CAB011A401131008AD4C9 /* DoEverything.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DoEverything.h; path = Common/Headers/DoEverything.h; sourceTree = "<group>"; };
+		A32CAB041A401586008AD4C9 /* DEBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEBaseViewController.h; path = ViewControllers/Common/DEBaseViewController.h; sourceTree = "<group>"; };
+		A32CAB051A401586008AD4C9 /* DEBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEBaseViewController.m; path = ViewControllers/Common/DEBaseViewController.m; sourceTree = "<group>"; };
 		A32D9D341A27024E0079DA95 /* DoEverything.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoEverything.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32D9D381A27024E0079DA95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A32D9D391A27024E0079DA95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -132,6 +141,7 @@
 		A32916861A3EAEF000824A39 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A32CAAFC1A400F7F008AD4C9 /* Headers */,
 				A32916931A3EAFB000824A39 /* DEDeviceInfo.h */,
 				A32916941A3EAFB000824A39 /* DEDeviceInfo.m */,
 				A32916871A3EAF6B00824A39 /* DEDiskInfo.h */,
@@ -166,6 +176,44 @@
 			name = DEPieChart;
 			sourceTree = "<group>";
 		};
+		A32CAAF51A3FF7E1008AD4C9 /* DEGallery */ = {
+			isa = PBXGroup;
+			children = (
+				A32CAAF91A3FF84A008AD4C9 /* DEGalleryViewController.h */,
+				A32CAAFA1A3FF84A008AD4C9 /* DEGalleryViewController.m */,
+				A32CAAF61A3FF82C008AD4C9 /* DEAlbumListViewController.h */,
+				A32CAAF71A3FF82C008AD4C9 /* DEAlbumListViewController.m */,
+			);
+			name = DEGallery;
+			sourceTree = "<group>";
+		};
+		A32CAAFC1A400F7F008AD4C9 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A32CAAFE1A400FC5008AD4C9 /* DEMacro.h */,
+				A32CAAFF1A400FE4008AD4C9 /* DEConstants.h */,
+				A32CAB011A401131008AD4C9 /* DoEverything.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		A32CAB031A401557008AD4C9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A32CAB071A401589008AD4C9 /* Common */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A32CAB071A401589008AD4C9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A32CAB041A401586008AD4C9 /* DEBaseViewController.h */,
+				A32CAB051A401586008AD4C9 /* DEBaseViewController.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		A32D9D2B1A27024E0079DA95 = {
 			isa = PBXGroup;
 			children = (
@@ -188,12 +236,14 @@
 		A32D9D361A27024E0079DA95 /* DoEverything */ = {
 			isa = PBXGroup;
 			children = (
+				A32CAAF51A3FF7E1008AD4C9 /* DEGallery */,
+				A3B32C981A37368B0003976B /* DEMyGauge */,
 				A32916A01A3EC67600824A39 /* Resources */,
 				A32916861A3EAEF000824A39 /* Common */,
-				A3B32C981A37368B0003976B /* DEMyGauge */,
 				A3B32C941A372EA30003976B /* Model */,
 				A3B11DA81A35DF130045F4F1 /* DEGauge */,
 				A32C30DE1A2EF3E5002D7381 /* DEPieChart */,
+				A32CAB031A401557008AD4C9 /* ViewControllers */,
 				A32D9D3B1A27024E0079DA95 /* AppDelegate.h */,
 				A32D9D3C1A27024E0079DA95 /* AppDelegate.m */,
 				A32D9D411A27024E0079DA95 /* ViewController.h */,
@@ -203,8 +253,6 @@
 				A32D9D491A27024E0079DA95 /* LaunchScreen.xib */,
 				A32D9D3E1A27024E0079DA95 /* DoEverything.xcdatamodeld */,
 				A32D9D371A27024E0079DA95 /* Supporting Files */,
-				A329169D1A3EC25500824A39 /* DEGalleryViewController.h */,
-				A329169E1A3EC25500824A39 /* DEGalleryViewController.m */,
 			);
 			path = DoEverything;
 			sourceTree = "<group>";
@@ -408,19 +456,21 @@
 			files = (
 				A3B11DB01A35E75C0045F4F1 /* DEGNeedleView.m in Sources */,
 				A32D9D3D1A27024E0079DA95 /* AppDelegate.m in Sources */,
-				A329169F1A3EC25500824A39 /* DEGalleryViewController.m in Sources */,
 				A3B11DB61A35E7D50045F4F1 /* DEGGradientArcLayer.m in Sources */,
 				A32916951A3EAFB000824A39 /* DEDeviceInfo.m in Sources */,
 				A32D9D3A1A27024E0079DA95 /* main.m in Sources */,
 				A329168C1A3EAF6B00824A39 /* DEGetValues.m in Sources */,
 				A32916991A3EBCC700824A39 /* DEImageInfo.m in Sources */,
 				A3B11DB31A35E7A20045F4F1 /* DEGArcLayer.m in Sources */,
+				A32CAAFB1A3FF84A008AD4C9 /* DEGalleryViewController.m in Sources */,
 				A32465381A37EE0D00B49F4A /* DEMGaugeView.m in Sources */,
 				A32C30E11A2EF527002D7381 /* DEPieLabel.m in Sources */,
+				A32CAAF81A3FF82C008AD4C9 /* DEAlbumListViewController.m in Sources */,
 				A32D9D431A27024E0079DA95 /* ViewController.m in Sources */,
 				A32C30E41A2EF53F002D7381 /* DEPieAnimator.m in Sources */,
 				A32D9D401A27024E0079DA95 /* DoEverything.xcdatamodeld in Sources */,
 				A32465351A37EDD600B49F4A /* DEMGradientArcLayer.m in Sources */,
+				A32CAB061A401586008AD4C9 /* DEBaseViewController.m in Sources */,
 				A3B32C9B1A373A090003976B /* DEMArcLayer.m in Sources */,
 				A329168F1A3EAF8900824A39 /* DEMultimediaInfo.m in Sources */,
 				A3B11DAB1A35DF130045F4F1 /* DEGauge.m in Sources */,

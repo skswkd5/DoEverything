@@ -30,6 +30,5 @@
 //+ (CGFloat)freeDiskSpaceInBytes ;
 //+ (CGFloat)usedDiskSpaceInBytes;
 
-+ (void)getMultimediaInfo;
 
 @end
