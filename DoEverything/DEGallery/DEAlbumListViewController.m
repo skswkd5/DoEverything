@@ -20,29 +20,6 @@
 
 @implementation DEAlbumListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        [self setMediaData];
-    }
-    return self;
-}
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil userInfo:(NSArray *)userInfo
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        _arrAlbums = self.mediaInfo.assetGroups;
-        [self setMediaData];
-    }
-    
-    return self;
-}
-
 - (void)setMediaData
 {
 //   _arrAlbums = self.mediaInfo.assetGroups;
@@ -148,6 +125,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.arrAlbums.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 @end

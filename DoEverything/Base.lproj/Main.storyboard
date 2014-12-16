@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,13 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7Z-dO-fiQ">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7Z-dO-fiQ">
                                 <rect key="frame" x="113" y="240" width="93" height="100"/>
                                 <state key="normal" title="사진" backgroundImage="btn_tutorial_n.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjH-7p-npA">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjH-7p-npA">
                                 <rect key="frame" x="216" y="240" width="93" height="100"/>
                                 <state key="normal" title="동영상" backgroundImage="btn_tutorial_n.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,7 +36,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="8Ut-lI-K6q" customClass="DEMGaugeView">
+                            <view contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="8Ut-lI-K6q" customClass="DEMGaugeView">
                                 <rect key="frame" x="10" y="80" width="300" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -45,7 +46,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdu-yJ-xqW">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdu-yJ-xqW">
                                 <rect key="frame" x="10" y="240" width="93" height="100"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="갤러리" backgroundImage="btn_tutorial_n.png">
@@ -58,6 +59,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="8Ut-lI-K6q" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="07a-gw-ffT"/>
+                            <constraint firstItem="pdu-yJ-xqW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="1xK-oe-78R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Ut-lI-K6q" secondAttribute="trailing" constant="10" id="2Xy-9R-1Ow"/>
+                            <constraint firstItem="B7Z-dO-fiQ" firstAttribute="leading" secondItem="pdu-yJ-xqW" secondAttribute="trailing" constant="10" id="EZf-Ik-paA"/>
+                            <constraint firstItem="8Ut-lI-K6q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="IPt-Z8-0Ae"/>
+                            <constraint firstAttribute="centerX" secondItem="8Ut-lI-K6q" secondAttribute="centerX" id="NcL-49-g2g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LjH-7p-npA" secondAttribute="trailing" constant="10" id="UbA-kd-DaK"/>
+                            <constraint firstItem="pdu-yJ-xqW" firstAttribute="top" secondItem="8Ut-lI-K6q" secondAttribute="bottom" constant="10" id="VAg-U0-ZBb"/>
+                            <constraint firstItem="B7Z-dO-fiQ" firstAttribute="top" secondItem="8Ut-lI-K6q" secondAttribute="bottom" constant="10" id="bKf-S4-mDS"/>
+                            <constraint firstItem="LjH-7p-npA" firstAttribute="top" secondItem="8Ut-lI-K6q" secondAttribute="bottom" constant="10" id="cKh-bW-3Eb"/>
+                            <constraint firstItem="LjH-7p-npA" firstAttribute="leading" secondItem="B7Z-dO-fiQ" secondAttribute="trailing" constant="10" id="jAV-9m-EDX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nvR-2D-tZV"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
