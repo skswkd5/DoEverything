@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A32465351A37EDD600B49F4A /* DEMGradientArcLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A32465341A37EDD600B49F4A /* DEMGradientArcLayer.m */; };
 		A32465381A37EE0D00B49F4A /* DEMGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A32465371A37EE0D00B49F4A /* DEMGaugeView.m */; };
+		A32851011A4120F500582A0D /* DEAlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32851001A4120F500582A0D /* DEAlbumDetailViewController.m */; };
+		A328510A1A4172FF00582A0D /* DEAlbumDetailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32851091A4172FF00582A0D /* DEAlbumDetailCollectionViewCell.m */; };
 		A329168B1A3EAF6B00824A39 /* DEDiskInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A32916881A3EAF6B00824A39 /* DEDiskInfo.m */; };
 		A329168C1A3EAF6B00824A39 /* DEGetValues.m in Sources */ = {isa = PBXBuildFile; fileRef = A329168A1A3EAF6B00824A39 /* DEGetValues.m */; };
 		A329168F1A3EAF8900824A39 /* DEMultimediaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A329168E1A3EAF8900824A39 /* DEMultimediaInfo.m */; };
@@ -58,6 +60,10 @@
 		A32465341A37EDD600B49F4A /* DEMGradientArcLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMGradientArcLayer.m; path = DEMyGauge/DEMGradientArcLayer.m; sourceTree = "<group>"; };
 		A32465361A37EE0D00B49F4A /* DEMGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMGaugeView.h; path = DEMyGauge/DEMGaugeView.h; sourceTree = "<group>"; };
 		A32465371A37EE0D00B49F4A /* DEMGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMGaugeView.m; path = DEMyGauge/DEMGaugeView.m; sourceTree = "<group>"; };
+		A32850FF1A4120F500582A0D /* DEAlbumDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEAlbumDetailViewController.h; path = DEGallery/DEAlbumDetailViewController.h; sourceTree = "<group>"; };
+		A32851001A4120F500582A0D /* DEAlbumDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEAlbumDetailViewController.m; path = DEGallery/DEAlbumDetailViewController.m; sourceTree = "<group>"; };
+		A32851081A4172FF00582A0D /* DEAlbumDetailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEAlbumDetailCollectionViewCell.h; path = DEGallery/DEAlbumDetailCollectionViewCell.h; sourceTree = "<group>"; };
+		A32851091A4172FF00582A0D /* DEAlbumDetailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEAlbumDetailCollectionViewCell.m; path = DEGallery/DEAlbumDetailCollectionViewCell.m; sourceTree = "<group>"; };
 		A32916871A3EAF6B00824A39 /* DEDiskInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEDiskInfo.h; path = Common/DEDiskInfo.h; sourceTree = "<group>"; };
 		A32916881A3EAF6B00824A39 /* DEDiskInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEDiskInfo.m; path = Common/DEDiskInfo.m; sourceTree = "<group>"; };
 		A32916891A3EAF6B00824A39 /* DEGetValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEGetValues.h; path = Common/DEGetValues.h; sourceTree = "<group>"; };
@@ -183,6 +189,10 @@
 				A32CAAFA1A3FF84A008AD4C9 /* DEGalleryViewController.m */,
 				A32CAAF61A3FF82C008AD4C9 /* DEAlbumListViewController.h */,
 				A32CAAF71A3FF82C008AD4C9 /* DEAlbumListViewController.m */,
+				A32850FF1A4120F500582A0D /* DEAlbumDetailViewController.h */,
+				A32851001A4120F500582A0D /* DEAlbumDetailViewController.m */,
+				A32851081A4172FF00582A0D /* DEAlbumDetailCollectionViewCell.h */,
+				A32851091A4172FF00582A0D /* DEAlbumDetailCollectionViewCell.m */,
 			);
 			name = DEGallery;
 			sourceTree = "<group>";
@@ -454,11 +464,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32851011A4120F500582A0D /* DEAlbumDetailViewController.m in Sources */,
 				A3B11DB01A35E75C0045F4F1 /* DEGNeedleView.m in Sources */,
 				A32D9D3D1A27024E0079DA95 /* AppDelegate.m in Sources */,
 				A3B11DB61A35E7D50045F4F1 /* DEGGradientArcLayer.m in Sources */,
 				A32916951A3EAFB000824A39 /* DEDeviceInfo.m in Sources */,
 				A32D9D3A1A27024E0079DA95 /* main.m in Sources */,
+				A328510A1A4172FF00582A0D /* DEAlbumDetailCollectionViewCell.m in Sources */,
 				A329168C1A3EAF6B00824A39 /* DEGetValues.m in Sources */,
 				A32916991A3EBCC700824A39 /* DEImageInfo.m in Sources */,
 				A3B11DB31A35E7A20045F4F1 /* DEGArcLayer.m in Sources */,

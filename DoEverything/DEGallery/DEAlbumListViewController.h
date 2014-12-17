@@ -11,6 +11,6 @@
 
 @interface DEAlbumListViewController : DEBaseViewController<UITableViewDataSource, UITableViewDelegate>
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil userInfo:(NSArray *)userInfo;
+
 
 @end

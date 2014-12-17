@@ -7,6 +7,8 @@
 //
 
 #import "DEAlbumListViewController.h"
+#import "DEAlbumDetailViewController.h"
+
 
 @interface DEAlbumListViewController ()
 
@@ -106,20 +108,27 @@
 #pragma mark -UITableView Delegate
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"AlbumCel";
+    static NSString *cellIdentifier = @"AlbumCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    DEAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+//        NSArray *arr = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
+//        cell = [arr lastObject];
     }
-    
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     NSDictionary *dicAlbumInfo = [self.arrAlbums objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)", dicAlbumInfo[@"AlbumName"], [dicAlbumInfo[@"TotalCount"] intValue]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"이미지: %d장 동영상:%d개", [dicAlbumInfo[@"ImageCount"] intValue], [dicAlbumInfo[@"VideoCount"] intValue]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"이미지: %d장   동영상:%d개", [dicAlbumInfo[@"ImageCount"] intValue], [dicAlbumInfo[@"VideoCount"] intValue]];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 45;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -129,7 +138,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+//    [self performSegueWithIdentifier:@"AlbumDetailViewSegue" sender:[self.arrAlbums objectAtIndex:indexPath.row]];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"AlbumDetailViewSegue"])
+    {
+        NSIndexPath *path = [self.tblList indexPathForSelectedRow];
+        NSDictionary *albumInfo = [self.arrAlbums objectAtIndex:path.row];
+        
+        DEAlbumDetailViewController *albumVC = segue.destinationViewController;
+        albumVC.selectedAlbum = albumInfo;
+    }
 }
 
 @end
