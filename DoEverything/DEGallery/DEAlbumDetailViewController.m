@@ -18,7 +18,7 @@
 
 @implementation DEAlbumDetailViewController
 
-
+//TSAssetsViewController 참조할것!!!
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -34,6 +34,7 @@
     }
     
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"AlbumCollectionCell"];
+    self.collectionView.allowsMultipleSelection = YES;
     
     [self setViewControllers];
     
@@ -60,6 +61,14 @@
 {
     //컨트롤들 정리하기
 //    [self.collectionView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.sectionInset = UIEdgeInsetsMake(5.f, 5.f, 5.f, 1.f);
+    layout.minimumLineSpacing = 10.0f;
+    layout.minimumInteritemSpacing = 10.0f;
+    layout.itemSize = CGSizeMake(70.0f, 70.0f);
+    
+    self.collectionView.collectionViewLayout = layout;
     [self.collectionView setBackgroundColor:[UIColor clearColor]];
 
     
@@ -69,8 +78,8 @@
 #pragma mark -UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-//    return [self.selectedAlbum[@"TotalCount"] integerValue];
-    return 2;
+    return [self.selectedAlbum[@"TotalCount"] integerValue];
+//    return 1;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
@@ -100,8 +109,11 @@
     }
     NSString *tmp = self.arrData[indexPath.row];
 //    cell.textString = tmp;
-    
 //    [cell setTextString:self.arrData[indexPath.row]];
+    
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+    cell.selectedBackgroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
+    
     
     return cell;
 }
@@ -118,22 +130,25 @@
 {
     // TODO: Select Item
 }
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     // TODO: Deselect item
 }
 
-#pragma mark – UICollectionViewDelegateFlowLayout
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-//    NSString *searchTerm = self.searches[indexPath.section];
-//    FlickrPhoto *photo = self.searchResults[searchTerm][indexPath.row];
-    
-    CGSize cellSize = CGSizeMake(100, 100);
-    return cellSize;
-}
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 5, 0, 5);
-}
+#pragma mark – UICollectionViewDelegateFlowLayout
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+////    NSString *searchTerm = self.searches[indexPath.section];
+////    FlickrPhoto *photo = self.searchResults[searchTerm][indexPath.row];
+//    
+//    CGSize cellSize = CGSizeMake(100, 100);
+//    return cellSize;
+//}
+
+//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+//{
+//    return UIEdgeInsetsMake(1, 1, 1, 1);
+//}
 
 @end
