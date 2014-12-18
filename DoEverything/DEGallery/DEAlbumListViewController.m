@@ -8,6 +8,7 @@
 
 #import "DEAlbumListViewController.h"
 #import "DEAlbumDetailViewController.h"
+#import "DEAlbumTableViewController.h"
 
 
 @interface DEAlbumListViewController ()
@@ -62,7 +63,8 @@
             NSDictionary *dicGroup = @{@"AlbumName":groupPropertyName, @"Type":Type,
                                        @"TotalCount":[NSNumber numberWithInt:groupImageCount],
                                        @"ImageCount":[NSNumber numberWithInt:groupImageCount],
-                                       @"VideoCount":[NSNumber numberWithInt:groupVideoCount]};
+                                       @"VideoCount":[NSNumber numberWithInt:groupVideoCount],
+                                       @"Library":group};
             
             [arrGroups addObject:dicGroup];
             
@@ -138,6 +140,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    [self performSegueWithIdentifier:@"AlbumDetailViewSegue" sender:[self.arrAlbums objectAtIndex:indexPath.row]];
 }
 
@@ -148,8 +151,9 @@
         NSIndexPath *path = [self.tblList indexPathForSelectedRow];
         NSDictionary *albumInfo = [self.arrAlbums objectAtIndex:path.row];
         
-        DEAlbumDetailViewController *albumVC = segue.destinationViewController;
-        albumVC.selectedAlbum = albumInfo;
+//        DEAlbumDetailViewController *albumVC = segue.destinationViewController;
+        DEAlbumTableViewController *albumVC = segue.destinationViewController;
+        [albumVC configureWithAlbumInfo:albumInfo];
     }
 }
 

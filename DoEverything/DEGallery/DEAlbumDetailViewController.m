@@ -8,11 +8,16 @@
 
 #import "DEAlbumDetailViewController.h"
 #import "DEAlbumDetailCollectionViewCell.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface DEAlbumDetailViewController ()
 
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (nonatomic, strong) NSMutableArray *arrData;
+@property (nonatomic, strong) NSDictionary *selectedAlbum;
+
+@property (nonatomic, strong) NSMutableArray *arrAssets;
 
 @end
 
@@ -21,6 +26,8 @@
 //TSAssetsViewController 참조할것!!!
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self feachAssetsFromAssets];
     
     if ([self.selectedAlbum[@"TotalCount"] intValue])
     {
@@ -45,6 +52,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)configureWithAlbumInfo:(NSDictionary *)selectedAlbum
+{
+    _selectedAlbum = selectedAlbum;
+    self.navigationItem.title = self.selectedAlbum[@"AlbumName"];
+}
 /*
 #pragma mark - Navigation
 
@@ -74,12 +86,51 @@
     
 }
 
+#pragma mark - AssetsFromAlbum
+- (void)feachAssetsFromAssets
+{
+    //앨범에서 데이터 받아오기
+    self.arrAssets = [NSMutableArray new];
+    ALAssetsLibrary *library = [ALAssetsLibrary new];
+    NSString *albumName = self.selectedAlbum[@"AlbumName"];
+    [library enumerateGroupsWithTypes:ALAssetsGroupAll
+                           usingBlock:^(ALAssetsGroup *group, BOOL *stop){
+                               
+                               if(group && [[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName])
+                               {
+                                   //선택한 앨범일때
+                                   [group setAssetsFilter:[ALAssetsFilter allAssets]];
+                                   [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
+                                     
+                                       if(result)
+                                       {
+//                                           CGSize assetSize = [result.defaultRepresentation dimensions];
+                                           //사진 넣기
+                                           NSLog(@"result: %@", result);
+                                           [self.arrAssets addObject:result];
+    
+                                       }
+                                   }];
+                                   
+                                   NSLog(@"self.arrAssets.count: %lu", (unsigned long)self.arrAssets.count);
+                                   
+                               }
+                        
+    }
+    failureBlock:^(NSError *error){
+        NSLog(@"NSError: %@", error);
+    }];
+    
+}
+
 
 #pragma mark -UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.selectedAlbum[@"TotalCount"] integerValue];
-//    return 1;
+//    return [self.selectedAlbum[@"TotalCount"] integerValue];
+//    NSInteger count = [self.selectedAlbum[@"TotalCount"] integerValue] /4;
+//    return count;
+    return 1;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
@@ -91,6 +142,17 @@
 {
 //    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCollectionCell" forIndexPath:indexPath];
     DEAlbumDetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AlbumCollectionCell" forIndexPath:indexPath];
+    
+    if(cell == nil)
+    {
+//        cell = [DEAlbumDetailCollectionViewCell alloc] 
+    }
+    
+    
+    
+    
+    
+    
     
     int iColor = indexPath.row %2;
     

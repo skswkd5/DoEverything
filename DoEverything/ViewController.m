@@ -37,6 +37,11 @@
     
     [self setUIControllers];
     [self showMyGauge];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayMyGuageGraph)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
 }
 
 
@@ -129,13 +134,17 @@
     self.myGauge.fillArcStrokeColor = cForArc;
     self.myGauge.startAngle = 0;
     self.myGauge.endAngle = 180;
-    
-    //Disk 정보
-    float usedValue = [self.diskInfo.usedPercent floatValue];
-    [self.myGauge setValue:usedValue animated:YES];
-    
+    self.myGauge.value = 0;
 }
 
+- (void)displayMyGuageGraph
+{
+    //Disk 정보
+    float usedValue = [self.diskInfo.usedPercent floatValue];
+    for (float i =0; i < usedValue; i++) {
+        [self.myGauge setValue:i animated:YES];
+    }
+}
 
 #pragma mark IBAction Functions
 

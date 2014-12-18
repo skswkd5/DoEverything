@@ -12,7 +12,8 @@
 
 @interface DEAlbumDetailViewController :DEBaseViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) NSDictionary *selectedAlbum;
 
+
+- (void)configureWithAlbumInfo:(NSDictionary *)selectedAlbum;
 
 @end

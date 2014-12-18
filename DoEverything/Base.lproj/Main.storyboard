@@ -144,7 +144,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="TAc-xu-6lo" kind="push" identifier="AlbumDetailViewSegue" id="ONW-pH-7Zp"/>
+                                            <segue destination="eWt-u7-JVl" kind="push" identifier="AlbumDetailViewSegue" id="20F-WY-4Kh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -225,7 +225,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzU-uG-yea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-269" y="1883"/>
+            <point key="canvasLocation" x="-510" y="1883"/>
+        </scene>
+        <!--Album Table View Controller-->
+        <scene sceneID="eMb-Eo-cie">
+            <objects>
+                <tableViewController id="eWt-u7-JVl" customClass="DEAlbumTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="W4l-3d-fVo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumTableDetailCell" id="1wR-ni-pky" customClass="DEAlbumTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="AlbumTableCell" tableViewCell="1wR-ni-pky" id="hve-GD-HSR">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eWt-u7-JVl" id="doG-mr-Grj"/>
+                            <outlet property="delegate" destination="eWt-u7-JVl" id="LiH-Ne-g5X"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Q76-pp-pkT"/>
+                    <connections>
+                        <outlet property="tblAsset" destination="W4l-3d-fVo" id="vGu-ug-f6x"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fFE-E4-FLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="1876"/>
         </scene>
     </scenes>
     <resources>
