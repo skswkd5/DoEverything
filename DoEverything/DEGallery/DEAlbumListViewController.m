@@ -92,9 +92,9 @@
 - (void)setMediaDataFromCoreData
 {
     // Fetch the devices from persistent data store
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"GroupLibrary"];
-    self.albumsFromCoreData = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+//    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"GroupLibrary"];
+//    self.albumsFromCoreData = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
 }
 
 - (void)viewDidLoad {
@@ -175,20 +175,171 @@
     NSDictionary *album = info;
     NSManagedObjectContext *context = [self managedObjectContext];
     
-    NSManagedObject *newAlbum = [NSEntityDescription insertNewObjectForEntityForName:@"GroupLibrary" inManagedObjectContext:context];
-    [newAlbum setValue:album[@"AlbumName"] forKey:@"name"];
-    [newAlbum setValue:album[@"TotalCount"] forKey:@"totalAsset"];
-    [newAlbum setValue:album[@"ImageCount"] forKey:@"totalImage"];
-    [newAlbum setValue:album[@"VideoCount"] forKey:@"totalVideo"];
-    [newAlbum setValue:album[@"Url"] forKey:@"url"];
-    [newAlbum setValue:album[@"Type"] forKey:@"type"];
-    [newAlbum setValue:album[@"persistentId"] forKey:@"persistentID"];
+//    NSManagedObject *newAlbum = [NSEntityDescription insertNewObjectForEntityForName:@"GroupLibrary" inManagedObjectContext:context];
+//    [newAlbum setValue:album[@"AlbumName"] forKey:@"name"];
+//    [newAlbum setValue:album[@"TotalCount"] forKey:@"totalAsset"];
+//    [newAlbum setValue:album[@"ImageCount"] forKey:@"totalImage"];
+//    [newAlbum setValue:album[@"VideoCount"] forKey:@"totalVideo"];
+//    [newAlbum setValue:album[@"Url"] forKey:@"url"];
+//    [newAlbum setValue:album[@"Type"] forKey:@"type"];
+//    [newAlbum setValue:album[@"persistentId"] forKey:@"persistentID"];
+//    
+//    NSError *error = nil;
+//    // Save the object to persistent store
+//    if (![context save:&error]) {
+//        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+//    }
     
-    NSError *error = nil;
-    // Save the object to persistent store
-    if (![context save:&error]) {
-        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-    }
+    
+//    if(ContactData == nil ||  [ContactData count] == 0){
+//#ifdef _DEBUG_ONLY_
+//        COLog(@"update_Contact ContactCount = %d",[ContactData count]);
+//        return NO;
+//#endif
+//    }
+//#ifdef _DEBUG_ONLY_
+//    COLog(@"update_Contact ContactCount = %d",[ContactData count]);
+//#endif
+//    
+//    if( IOS_VERSION_OVER_5 )
+//    {
+//        ChatOnClientAppDelegate *appDelegate = (ChatOnClientAppDelegate *)[[UIApplication sharedApplication] delegate];
+//        
+//        NSManagedObjectContext *context = [appDelegate newPrivateManagedObjectContext];
+//        
+//        __block NSError *error = nil;
+//        
+//        [context performBlock:^{
+//            
+//            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//            
+//            NSEntityDescription *entity = [NSEntityDescription entityForName:@"Contact" inManagedObjectContext:context];
+//            
+//            [fetchRequest setEntity:entity];
+//            
+//            NSSortDescriptor *sortDescriptor = nil;
+//            sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"originalNumber" ascending:YES];
+//            NSArray *sortDescriptors = nil;
+//            sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+//            [fetchRequest setSortDescriptors:sortDescriptors];
+//            sortDescriptor = nil;
+//            sortDescriptors = nil;
+//            
+//            for(int i=0;i<[ContactData count]; i++){
+//                NSPredicate *predicate = nil;
+//                NSString *attributeName = @"originalNumber";
+//                NSString *attributeValue = [[ContactData objectAtIndex:i]objectForKey:CONTACTS_PHONE_NUMBER];
+//                
+//                predicate = [NSPredicate predicateWithFormat:@"%K like %@",attributeName,attributeValue];
+//                
+//                [fetchRequest setPredicate:predicate];
+//                
+//                [fetchRequest setResultType:NSManagedObjectIDResultType];
+//                
+//                NSArray * result = [context executeFetchRequest:fetchRequest error:&error];
+//                
+//                Contact *contact = nil;
+//                
+//                if([result count] > 0){
+//                    contact = (Contact *)[context objectWithID:(NSManagedObjectID *)[result lastObject]];
+//                }
+//                else{
+//                    contact = (Contact *)[NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:context];
+//                    contact.originalNumber = [NSString stringWithString:[[ContactData objectAtIndex:i] objectForKey:CONTACTS_PHONE_NUMBER]];
+//                    contact.uploadStatus = [NSNumber numberWithInt:1];
+//                    contact.phoneNumber = [[[NSString stringWithString:[[ContactData objectAtIndex:i] objectForKey:CONTACTS_PHONE_NUMBER]] componentsSeparatedByCharactersInSet:
+//                                            [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]] componentsJoinedByString:@""];
+//                    
+//                }
+//                contact.originalName = [[ContactData objectAtIndex:i] objectForKey:CONTACTS_DISPLAY_NAME];
+//                contact.recodID = [NSNumber numberWithLong:[[[ContactData objectAtIndex:i]objectForKey:CONTACTS_PERSON_ID] intValue]];
+//            }
+//            
+//            fetchRequest = nil;
+//            
+//            error = nil;
+//            
+//            [context save:&error];
+//            
+//            if(!error)
+//            {
+//                [appDelegate saveContext:CONTEXT_SAVE_MODULE_CONTACT_COREDATA saveMode:YES syncMode:NO];
+//            }
+//        }];
+//        
+//        return YES;
+//    }
+//    else
+//    {
+//        ChatOnClientAppDelegate *appDelegate = (ChatOnClientAppDelegate *)[[UIApplication sharedApplication] delegate];
+//        NSManagedObjectContext *context = [appDelegate mainManagedObjectContext];
+//        
+//        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//        
+//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Contact" inManagedObjectContext:context];
+//        
+//        [fetchRequest setEntity:entity];
+//        
+//        NSSortDescriptor *sortDescriptor = nil;
+//        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"originalNumber" ascending:YES];
+//        NSArray *sortDescriptors = nil;
+//        sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+//        [fetchRequest setSortDescriptors:sortDescriptors];
+//        sortDescriptor = nil;
+//        sortDescriptors = nil;
+//        
+//        
+//        NSError *error = nil;
+//        for(int i=0;i<[ContactData count]; i++){
+//            NSPredicate *predicate = nil;
+//            NSString *attributeName = @"originalNumber";
+//            NSString *attributeValue = [[ContactData objectAtIndex:i]objectForKey:CONTACTS_PHONE_NUMBER];
+//            
+//            predicate = [NSPredicate predicateWithFormat:@"%K like %@",attributeName,attributeValue];
+//            
+//            [fetchRequest setPredicate:predicate];
+//            
+//            [fetchRequest setResultType:NSManagedObjectIDResultType];
+//            
+//            NSArray * result = [context executeFetchRequest:fetchRequest error:&error];
+//            
+//            Contact *contact = nil;
+//            
+//            if([result count] > 0){
+//                contact = (Contact *)[context objectWithID:(NSManagedObjectID *)[result lastObject]];
+//            }
+//            else{
+//                contact = (Contact *)[NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:context];
+//                contact.originalNumber = [NSString stringWithString:[[ContactData objectAtIndex:i] objectForKey:CONTACTS_PHONE_NUMBER]];
+//                contact.uploadStatus = [NSNumber numberWithInt:1];
+//                contact.phoneNumber = [[[NSString stringWithString:[[ContactData objectAtIndex:i] objectForKey:CONTACTS_PHONE_NUMBER]] componentsSeparatedByCharactersInSet:
+//                                        [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet]] componentsJoinedByString:@""];
+//                
+//            }
+//            contact.originalName = [[ContactData objectAtIndex:i] objectForKey:CONTACTS_DISPLAY_NAME];
+//            contact.recodID = [NSNumber numberWithLong:[[[ContactData objectAtIndex:i]objectForKey:CONTACTS_PERSON_ID] intValue]];
+//        }
+//        
+//        
+//        fetchRequest = nil;
+//        [context save:&error];
+//        
+//        
+//        
+//        if( error ){
+//#ifdef _DEBUG_ONLY_
+//            COLog(@"update_Contact error : %@",[error localizedDescription]);
+//#endif
+//            return NO;
+//        }
+//        else{
+//#ifdef _DEBUG_ONLY_
+//            COLog(@"Endupdate_Contact");
+//#endif
+//            return YES;
+//        }
+//        return NO;
+//    }
     
 }
 - (NSManagedObjectContext *)managedObjectContext{

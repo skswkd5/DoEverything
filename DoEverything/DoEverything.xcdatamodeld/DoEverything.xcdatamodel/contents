@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Assets" syncable="YES">
+    <entity name="Assets" representedClassName="Assets" syncable="YES">
         <attribute name="assetUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="byte" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,7 +14,7 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="asset_list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupLibrary" inverseName="group_library" inverseEntity="GroupLibrary" syncable="YES"/>
     </entity>
-    <entity name="GroupLibrary" syncable="YES">
+    <entity name="GroupLibrary" representedClassName="GroupLibrary" syncable="YES">
         <attribute name="assetNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="groupId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>

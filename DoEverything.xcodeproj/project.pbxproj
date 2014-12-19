@@ -24,6 +24,8 @@
 		A3299F511A43E80500E75478 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3299F4E1A43E80500E75478 /* checkmark@2x.png */; };
 		A3299F521A43E80500E75478 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3299F4F1A43E80500E75478 /* delete@2x.png */; };
 		A3299F561A440BBB00E75478 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3299F551A440BBB00E75478 /* CoreData.framework */; };
+		A3299F8E1A441CDD00E75478 /* GroupLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = A3299F8D1A441CDD00E75478 /* GroupLibrary.m */; };
+		A3299F911A441CDE00E75478 /* Assets.m in Sources */ = {isa = PBXBuildFile; fileRef = A3299F901A441CDE00E75478 /* Assets.m */; };
 		A32A60151A42768C003B8BB1 /* DEAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32A60141A42768C003B8BB1 /* DEAlbumTableViewController.m */; };
 		A32A60181A4290D9003B8BB1 /* DEAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32A60171A4290D9003B8BB1 /* DEAlbumTableViewCell.m */; };
 		A32C30E11A2EF527002D7381 /* DEPieLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32C30E01A2EF527002D7381 /* DEPieLabel.m */; };
@@ -88,6 +90,10 @@
 		A3299F4E1A43E80500E75478 /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
 		A3299F4F1A43E80500E75478 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		A3299F551A440BBB00E75478 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A3299F8C1A441CDD00E75478 /* GroupLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GroupLibrary.h; path = Model/GroupLibrary.h; sourceTree = "<group>"; };
+		A3299F8D1A441CDD00E75478 /* GroupLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GroupLibrary.m; path = Model/GroupLibrary.m; sourceTree = "<group>"; };
+		A3299F8F1A441CDD00E75478 /* Assets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Assets.h; path = Model/Assets.h; sourceTree = "<group>"; };
+		A3299F901A441CDE00E75478 /* Assets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Assets.m; path = Model/Assets.m; sourceTree = "<group>"; };
 		A32A60131A42768C003B8BB1 /* DEAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEAlbumTableViewController.h; path = DEGallery/DEAlbumTableViewController.h; sourceTree = "<group>"; };
 		A32A60141A42768C003B8BB1 /* DEAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEAlbumTableViewController.m; path = DEGallery/DEAlbumTableViewController.m; sourceTree = "<group>"; };
 		A32A60161A4290D9003B8BB1 /* DEAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEAlbumTableViewCell.h; path = DEGallery/DEAlbumTableViewCell.h; sourceTree = "<group>"; };
@@ -365,6 +371,10 @@
 			children = (
 				A32916971A3EBCC700824A39 /* DEImageInfo.h */,
 				A32916981A3EBCC700824A39 /* DEImageInfo.m */,
+				A3299F8F1A441CDD00E75478 /* Assets.h */,
+				A3299F901A441CDE00E75478 /* Assets.m */,
+				A3299F8C1A441CDD00E75478 /* GroupLibrary.h */,
+				A3299F8D1A441CDD00E75478 /* GroupLibrary.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -497,10 +507,12 @@
 				A32916951A3EAFB000824A39 /* DEDeviceInfo.m in Sources */,
 				A32D9D3A1A27024E0079DA95 /* main.m in Sources */,
 				A328510A1A4172FF00582A0D /* DEAlbumDetailCollectionViewCell.m in Sources */,
+				A3299F8E1A441CDD00E75478 /* GroupLibrary.m in Sources */,
 				A329168C1A3EAF6B00824A39 /* DEGetValues.m in Sources */,
 				A32A60151A42768C003B8BB1 /* DEAlbumTableViewController.m in Sources */,
 				A32916991A3EBCC700824A39 /* DEImageInfo.m in Sources */,
 				A32A60181A4290D9003B8BB1 /* DEAlbumTableViewCell.m in Sources */,
+				A3299F911A441CDE00E75478 /* Assets.m in Sources */,
 				A3B11DB31A35E7A20045F4F1 /* DEGArcLayer.m in Sources */,
 				A32CAAFB1A3FF84A008AD4C9 /* DEGalleryViewController.m in Sources */,
 				A32465381A37EE0D00B49F4A /* DEMGaugeView.m in Sources */,
