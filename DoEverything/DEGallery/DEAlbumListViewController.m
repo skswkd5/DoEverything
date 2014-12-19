@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSNumber *totalMedia;
 @property (nonatomic, strong) NSNumber *totalPictures;
 @property (nonatomic, strong) NSNumber *totalVideos;
-
+@property (nonatomic, strong) NSArray *albumsFromCoreData;
 @end
 
 @implementation DEAlbumListViewController
@@ -51,7 +51,8 @@
             NSString *groupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
             NSNumber *Type = [NSNumber numberWithInt:[[group valueForProperty:ALAssetsGroupPropertyType] intValue]];
             NSNumber *total = [NSNumber numberWithInt:group.numberOfAssets];
-            
+            NSString *url = (NSString *)[group valueForProperty:ALAssetsGroupPropertyURL];
+            NSString *persistentID = (NSString *)[group valueForProperty:ALAssetsGroupPropertyPersistentID];
             
             [group setAssetsFilter:[ALAssetsFilter allVideos]];
             int groupVideoCount = group.numberOfAssets;
@@ -61,16 +62,18 @@
             photoCount += groupImageCount;
             
             NSDictionary *dicGroup = @{@"AlbumName":groupPropertyName, @"Type":Type,
+                                       @"Url":url, @"persistentId": persistentID,
                                        @"TotalCount":[NSNumber numberWithInt:groupImageCount],
                                        @"ImageCount":[NSNumber numberWithInt:groupImageCount],
                                        @"VideoCount":[NSNumber numberWithInt:groupVideoCount],
                                        @"Library":group};
             
+            [self saveGroupPropertyToCoreData:dicGroup];
             [arrGroups addObject:dicGroup];
             
-            NSLog(@"group: %@", group);
-            NSLog(@"dicGroup: %@", dicGroup);
-            NSLog(@"arrGroups: %@", arrGroups);
+//            NSLog(@"group: %@", group);
+//            NSLog(@"dicGroup: %@", dicGroup);
+//            NSLog(@"arrGroups: %@", arrGroups);
             
         };
         void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
@@ -86,9 +89,18 @@
     
 }
 
+- (void)setMediaDataFromCoreData
+{
+    // Fetch the devices from persistent data store
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"GroupLibrary"];
+    self.albumsFromCoreData = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+}
+
 - (void)viewDidLoad {
-    [self setMediaData];
     [super viewDidLoad];
+    [self setMediaData];
+    [self setMediaDataFromCoreData];
     // Do any additional setup after loading the view.
 }
 
@@ -155,6 +167,38 @@
         DEAlbumTableViewController *albumVC = segue.destinationViewController;
         [albumVC configureWithAlbumInfo:albumInfo];
     }
+}
+
+#pragma mark - CoreData
+- (void)saveGroupPropertyToCoreData:(NSDictionary *)info
+{
+    NSDictionary *album = info;
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSManagedObject *newAlbum = [NSEntityDescription insertNewObjectForEntityForName:@"GroupLibrary" inManagedObjectContext:context];
+    [newAlbum setValue:album[@"AlbumName"] forKey:@"name"];
+    [newAlbum setValue:album[@"TotalCount"] forKey:@"totalAsset"];
+    [newAlbum setValue:album[@"ImageCount"] forKey:@"totalImage"];
+    [newAlbum setValue:album[@"VideoCount"] forKey:@"totalVideo"];
+    [newAlbum setValue:album[@"Url"] forKey:@"url"];
+    [newAlbum setValue:album[@"Type"] forKey:@"type"];
+    [newAlbum setValue:album[@"persistentId"] forKey:@"persistentID"];
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    if (![context save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    
+}
+- (NSManagedObjectContext *)managedObjectContext{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if([delegate performSelector:@selector(managedObjectContext)])
+    {
+        context = [delegate managedObjectContext];
+    }
+    return context;
 }
 
 @end

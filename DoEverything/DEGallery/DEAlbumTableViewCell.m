@@ -12,7 +12,6 @@
 @interface DEAlbumTableViewCell()
 
 @property (nonatomic, strong) NSArray *rowAssets;
-
 @property (nonatomic, strong) NSMutableArray *imageViewArray;
 
 @end
@@ -24,18 +23,57 @@
     // Initialization code
 }
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    if (self) {
+        
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
+        [self addGestureRecognizer:tapRecognizer];
+        
+        NSMutableArray *tmpViewArray = [[NSMutableArray alloc] init];
+        _imageViewArray = tmpViewArray;
+        
+        NSArray *tmpArray = [[NSArray alloc] init];
+        _rowAssets = tmpArray;
+        
+    }
+    
+    return self;
+}
+
+
 - (void)layoutSubviews
 {
     NSLog(@"%s", __FUNCTION__);
+    NSLog(@"_rowAssets.count:%d", _rowAssets.count);
     
     CGFloat startX = 10.0f;
-    CGRect frame = CGRectMake(startX, 9, 71, 71);
+    CGRect frame = CGRectMake(startX, 5, 71, 71);
     
     for (int i = 0; i < [_rowAssets count]; ++i) {
-        UIImageView *imageView = [_imageViewArray objectAtIndex:i];
-        imageView.backgroundColor = [UIColor magentaColor];
-        [imageView setFrame:frame];
-        [self.contentView addSubview:imageView];
+        
+        UIView *cellView = [[UIView alloc] initWithFrame:frame];
+        cellView.tag = i;
+        cellView.backgroundColor = [UIColor magentaColor];
+        [self.contentView addSubview:cellView];
+        
+        //Cell 이하 view
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cellView.frame.size.width, cellView.frame.size.height)];
+        imageView.tag = 1000;
+        
+        UIButton *btn = [[UIButton alloc] initWithFrame:cellView.frame];
+        btn.backgroundColor = [UIColor clearColor];
+        [cellView insertSubview:btn atIndex:0];
+        
+        ALAsset *asset = _rowAssets[i];
+        imageView.image = [[UIImage alloc] initWithCGImage:asset.thumbnail];
+        [cellView addSubview:imageView];
+        
+        UIImageView *checkImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
+        checkImg.image = [UIImage imageNamed:@"checkmark"];
+        checkImg.tag = 2000;
+        [cellView addSubview:checkImg];
         
 //        UIImageView *overlayView = [_overlayViewArray objectAtIndex:i];
 //        [overlayView setFrame:frame];
@@ -54,23 +92,33 @@
     NSLog(@"%s", __FUNCTION__);
     
     self.rowAssets = assetList;
-    for (UIImageView *view in _imageViewArray){
-        [view removeFromSuperview];
-    }
+    NSLog(@"rowAssets.count:%d", self.rowAssets.count);
+}
 
-    for (int i=0; i < self.rowAssets.count; i++) {
+
+- (void)cellTapped:(UITapGestureRecognizer *)tapRecognizer
+{
+    CGPoint point = [tapRecognizer locationInView:self];
+    
+    CGFloat startX = 10.0f;
+    CGRect frame = CGRectMake(startX, 5, 71, 71);
+
+    for (int i = 0; i < [_rowAssets count]; ++i) {
+        if (CGRectContainsPoint(frame, point)) {
+            
+            UIView *cellView = (UIView *)[self.contentView viewWithTag:i];
+            
+            UIImageView *checkImg = (UIImageView*)[cellView viewWithTag:2000];
+            if (checkImg != nil) {
+                BOOL iSelect = checkImg.hidden;
+                checkImg.hidden = !iSelect;
+            }
+            break;
+        }
         
-        ALAsset *asset = [self.rowAssets objectAtIndex:i];
-        if (i < self.imageViewArray.count) {
-            //이미 만들어진 UIImageView 재활용하기
-            UIImageView *imgView = [self.imageViewArray objectAtIndex:i];
-            imgView.image = [UIImage imageWithCGImage:asset.thumbnail];
-        }
-        else{
-            UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:asset.thumbnail]];
-            [self.imageViewArray addObject:imgView];
-        }
+        frame.origin.x = frame.origin.x + frame.size.width + 5;
     }
+    
     
 }
 
@@ -80,6 +128,8 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    
+     NSLog(@"###(void)setSelected:(BOOL)selected animated:(BOOL)animated###");
 }
 
 @end

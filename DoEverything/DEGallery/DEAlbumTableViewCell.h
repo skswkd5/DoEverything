@@ -8,8 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class DEAlbumTableViewCell;
+
+@protocol DEAlbumTableCellDelegate <NSObject>
+
+@end
+
+
 @interface DEAlbumTableViewCell : UITableViewCell
 
-- (void)setAssets:(NSArray *)assetList;
+@property (nonatomic, readonly, getter = isCellSelected) BOOL cellSelected;
 
+@property (nonatomic, weak) id<DEAlbumTableCellDelegate> delegate;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+- (void)setAssets:(NSArray *)assetList;
+- (void)markAsSelected:(BOOL)selected;
+    
 @end

@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *tblAsset;
 @property (nonatomic, strong) NSDictionary *selectedAlbum;
-@property (nonatomic, strong) NSArray *assetsList;
+@property (nonatomic, strong) NSMutableArray *assetList;
 
 @property (nonatomic) NSInteger cntImgInCell;
 @end
@@ -42,28 +42,29 @@
 - (void)initializing
 {
     self.cntImgInCell = 4;
+    self.assetList = [[NSMutableArray alloc] init];
     
 }
 
 - (void)showImages
 {
-    if (self.assetsList.count == 0) {
+    if (self.assetList.count == 0) {
         return;
     }
-    for (int i=0; i <self.assetsList.count; i++) {
+    for (int i=0; i <self.assetList.count; i++) {
         CGFloat xOffset = 5.0f;
         CGFloat yOffset = 5.0f;
         
         CGFloat width = 71;
         CGFloat height = 71;
         
-        int row = i /4;
-        int column = i %4;
+        int row = i /self.cntImgInCell;
+        int column = i %self.cntImgInCell;
         
         CGRect imgFrame = CGRectMake(xOffset + ((width + xOffset) *column), yOffset + ((height + yOffset) * row), width, height);
-        NSLog(@"index: %d UIImageView Frame: %@", i, NSStringFromCGRect(imgFrame));
+//        NSLog(@"index: %d UIImageView Frame: %@", i, NSStringFromCGRect(imgFrame));
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:imgFrame];
-        ALAsset *tmpAsset = self.assetsList[i];
+        ALAsset *tmpAsset = self.assetList[i];
         imgView.image = [UIImage imageWithCGImage:tmpAsset.thumbnail];
         [self.view addSubview:imgView];
         
@@ -91,8 +92,9 @@
 
 - (void)fetchSelectedGroupAssts
 {
+    
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    NSMutableArray *tmpAsset = [[NSMutableArray alloc] init];
+    __block NSMutableArray *tmpAsset = [[NSMutableArray alloc] init];
     
     NSString *albumName = self.selectedAlbum[@"AlbumName"];
     
@@ -112,18 +114,23 @@
                                           //사진 한장씩 넣기
                                            if(asset == nil)
                                            {
-                                               self.assetsList = [NSArray arrayWithArray:tmpAsset];
-                                               NSLog(@"self.assetsList.count: %d", self.assetsList.count);
+//                                               self.assetList = [NSArray arrayWithArray:tmpAsset];
+                                               NSLog(@"self.assetsList.count: %d", self.assetList.count);
+                                               NSLog(@"assetsLis: %@", self.assetList);
 //                                               [self showImages];
-                                               [self.tblAsset reloadData];
+                                               [self assetTableReload:tmpAsset];
+                                               NSLog(@"assetsLis: %@", self.assetList);
                                                return;
                                            }
                                            else
                                            {
                                                //사진 넣기
                                                [tmpAsset addObject:asset];
+                                               [self.assetList addObject:asset];
                                            }
                                        }];
+                                       
+                                       return;
                                    }
                                }
                            }
@@ -131,43 +138,45 @@
                              NSLog(@"Error in load assets!!");
                          }];
     });
-    
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        //테이블 리로드
-//        [self.tblAsset reloadData];
-//        long section = [self numberOfSectionsInTableView:self.tableView] - 1;
-//        long row = [self tableView:self.tableView numberOfRowsInSection:section] - 1;
-//        if (section >= 0 && row >= 0) {
-//            NSIndexPath *ip = [NSIndexPath indexPathForRow:row
-//                                                 inSection:section];
-//            [self.tableView scrollToRowAtIndexPath:ip
-//                                  atScrollPosition:UITableViewScrollPositionBottom
-//                                          animated:NO];
-//        }
-//        
-//        [self.navigationItem setTitle:self.singleSelection ? @"Pick Photo" : @"Pick Photos"];
-    });
-    
-    
+
 }
+
+
 #pragma mark - local Function
 - (NSArray *)rangeOfAssetsForRow:(NSIndexPath*)path
 {
-    long index = path.row * 4;
-    long length = MIN(4, (self.assetsList.count - index));
+    long index = path.row * self.cntImgInCell;
+    long length = MIN(self.cntImgInCell, (self.assetList.count - index));
+
     
-//    NSArray *arr = [self.assetsList subarrayWithRange:NSMakeRange(index, length)];
+//    NSArray *arr = [[NSArray alloc] initWithArray:[self.assetsList subarrayWithRange:NSMakeRange(index, length)]];
+//    NSLog(@"arr: %@", arr);
     NSMutableArray *arr = [[NSMutableArray alloc] init];
-    for(int i = index; i<length; i++)
+    for(int i = index; i < index + length; i++)
     {
-        [arr addObject:self.assetsList[i]];
+        NSLog(@"self.assetsList: %@", self.assetList[i]);
+
+        ALAsset *asset = self.assetList[i];
+        NSLog(@"asset: %@", asset);
+        [arr addObject:asset];
     }
+    NSLog(@"arr: %@", arr);
     return arr;
 }
 
 #pragma mark - Table view data source
+- (void)assetTableReload:(NSArray *)tmpAsset
+{
+    NSLog(@"%s", __FUNCTION__);
+     NSLog(@"tmpAsset: %@", tmpAsset);
+//    self.assetList = tmpAsset;
+     NSLog(@"assetsLis: %@", self.assetList);
+    [self.tblAsset reloadData];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    return 81;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
@@ -176,12 +185,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    if (self.assetsList.count) {
+    if (self.assetList.count) {
         NSInteger count = [self.selectedAlbum[@"TotalCount"] integerValue];
-        NSInteger row = ceil(count/self.cntImgInCell);
-        if (row == 0) {
-            row = 1;
+        NSInteger row = count/self.cntImgInCell;
+        
+        if (count % self.cntImgInCell > 0) {
+            row += 1;
         }
+        NSLog(@"row: %d", row)  ;
         return row;
     }
     else
@@ -191,6 +202,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSLog(@"%s", __FUNCTION__);
+    
     static NSString *cellIndentifier = @"AlbumTableDetailCell";
     DEAlbumTableViewCell *cell = (DEAlbumTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIndentifier forIndexPath:indexPath];
     if(cell == nil)
@@ -199,10 +212,18 @@
     }
     
     NSArray *assetsForRow = [self rangeOfAssetsForRow:indexPath];
+    NSLog(@"indexPath.row: %d assetsForRow:%@", indexPath.row, assetsForRow);
     [cell setAssets:assetsForRow];
     
     return cell;
 }
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//    NSLog(@"didSelectRowAtIndexPath: %d", indexPath.row);
+//    
+//}
 
 
 /*

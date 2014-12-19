@@ -20,6 +20,10 @@
 		A32916A41A3EC67600824A39 /* btn_tutorial_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A32916A21A3EC67600824A39 /* btn_tutorial_p@2x.png */; };
 		A32916A71A3EC8DD00824A39 /* btn_red01_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A32916A51A3EC8DD00824A39 /* btn_red01_n@2x.png */; };
 		A32916A81A3EC8DD00824A39 /* btn_red01_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A32916A61A3EC8DD00824A39 /* btn_red01_p@2x.png */; };
+		A3299F501A43E80500E75478 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3299F4D1A43E80500E75478 /* arrow@2x.png */; };
+		A3299F511A43E80500E75478 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3299F4E1A43E80500E75478 /* checkmark@2x.png */; };
+		A3299F521A43E80500E75478 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3299F4F1A43E80500E75478 /* delete@2x.png */; };
+		A3299F561A440BBB00E75478 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3299F551A440BBB00E75478 /* CoreData.framework */; };
 		A32A60151A42768C003B8BB1 /* DEAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32A60141A42768C003B8BB1 /* DEAlbumTableViewController.m */; };
 		A32A60181A4290D9003B8BB1 /* DEAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32A60171A4290D9003B8BB1 /* DEAlbumTableViewCell.m */; };
 		A32C30E11A2EF527002D7381 /* DEPieLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32C30E01A2EF527002D7381 /* DEPieLabel.m */; };
@@ -80,6 +84,10 @@
 		A32916A21A3EC67600824A39 /* btn_tutorial_p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_tutorial_p@2x.png"; sourceTree = "<group>"; };
 		A32916A51A3EC8DD00824A39 /* btn_red01_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_red01_n@2x.png"; sourceTree = "<group>"; };
 		A32916A61A3EC8DD00824A39 /* btn_red01_p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_red01_p@2x.png"; sourceTree = "<group>"; };
+		A3299F4D1A43E80500E75478 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		A3299F4E1A43E80500E75478 /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
+		A3299F4F1A43E80500E75478 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
+		A3299F551A440BBB00E75478 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A32A60131A42768C003B8BB1 /* DEAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEAlbumTableViewController.h; path = DEGallery/DEAlbumTableViewController.h; sourceTree = "<group>"; };
 		A32A60141A42768C003B8BB1 /* DEAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEAlbumTableViewController.m; path = DEGallery/DEAlbumTableViewController.m; sourceTree = "<group>"; };
 		A32A60161A4290D9003B8BB1 /* DEAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEAlbumTableViewCell.h; path = DEGallery/DEAlbumTableViewCell.h; sourceTree = "<group>"; };
@@ -133,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3299F561A440BBB00E75478 /* CoreData.framework in Frameworks */,
 				A3B11DB91A35ED750045F4F1 /* QuartzCore.framework in Frameworks */,
 				A3B11DBB1A35ED7E0045F4F1 /* UIKit.framework in Frameworks */,
 				A3B11DBD1A35ED8B0045F4F1 /* Foundation.framework in Frameworks */,
@@ -169,6 +178,9 @@
 		A32916A01A3EC67600824A39 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A3299F4D1A43E80500E75478 /* arrow@2x.png */,
+				A3299F4E1A43E80500E75478 /* checkmark@2x.png */,
+				A3299F4F1A43E80500E75478 /* delete@2x.png */,
 				A32916A51A3EC8DD00824A39 /* btn_red01_n@2x.png */,
 				A32916A61A3EC8DD00824A39 /* btn_red01_p@2x.png */,
 				A32916A11A3EC67600824A39 /* btn_tutorial_n@2x.png */,
@@ -339,6 +351,7 @@
 		A3B11DC01A35EDF50045F4F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3299F551A440BBB00E75478 /* CoreData.framework */,
 				A3B11DB81A35ED750045F4F1 /* QuartzCore.framework */,
 				A3B11DBA1A35ED7E0045F4F1 /* UIKit.framework */,
 				A3B11DBC1A35ED8B0045F4F1 /* Foundation.framework */,
@@ -451,9 +464,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A32D9D461A27024E0079DA95 /* Main.storyboard in Resources */,
+				A3299F521A43E80500E75478 /* delete@2x.png in Resources */,
+				A3299F511A43E80500E75478 /* checkmark@2x.png in Resources */,
 				A32916A71A3EC8DD00824A39 /* btn_red01_n@2x.png in Resources */,
 				A32D9D4B1A27024E0079DA95 /* LaunchScreen.xib in Resources */,
 				A32916A41A3EC67600824A39 /* btn_tutorial_p@2x.png in Resources */,
+				A3299F501A43E80500E75478 /* arrow@2x.png in Resources */,
 				A32916A81A3EC8DD00824A39 /* btn_red01_p@2x.png in Resources */,
 				A32916A31A3EC67600824A39 /* btn_tutorial_n@2x.png in Resources */,
 				A32D9D481A27024E0079DA95 /* Images.xcassets in Resources */,

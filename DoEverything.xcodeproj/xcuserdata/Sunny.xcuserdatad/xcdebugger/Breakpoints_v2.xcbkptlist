@@ -550,15 +550,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DoEverything/DEGallery/DEAlbumTableViewController.m"
-            timestampString = "440585073.333749"
+            timestampString = "440662344.104115"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-fetchSelectedGroupAssts"
             landmarkType = "5">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DoEverything/DEGallery/DEAlbumTableViewController.m"
-            timestampString = "440585073.333749"
+            timestampString = "440662344.104115"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-rangeOfAssetsForRow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DoEverything/DEGallery/DEAlbumTableViewCell.m"
-            timestampString = "440585418.720942"
+            timestampString = "440661682.442987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-setAssets:"
             landmarkType = "5">
          </BreakpointContent>
@@ -602,11 +602,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DoEverything/DEGallery/DEAlbumTableViewController.m"
-            timestampString = "440585730.517381"
+            timestampString = "440662344.104115"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-showImages"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DoEverything/DEGallery/DEAlbumTableViewController.m"
+            timestampString = "440662344.104115"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DoEverything/DEGallery/DEAlbumTableViewController.m"
+            timestampString = "440662344.104115"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -617,29 +649,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DoEverything/DEGallery/DEAlbumTableViewController.m"
-            timestampString = "440585073.333749"
+            filePath = "DoEverything/DEGallery/DEAlbumTableViewCell.m"
+            timestampString = "440661682.442987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-showImages"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DoEverything/DEGallery/DEAlbumTableViewController.m"
-            timestampString = "440585730.517381"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-tableView:numberOfRowsInSection:"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-cellTapped:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -650,12 +666,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DoEverything/DEGallery/DEAlbumTableViewCell.m"
-            timestampString = "440585418.720942"
+            timestampString = "440659609.32628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "-layoutSubviews"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "-initWithStyle:reuseIdentifier:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
