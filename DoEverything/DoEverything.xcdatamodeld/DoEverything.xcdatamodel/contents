@@ -30,7 +30,7 @@
         <relationship name="group_library" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Assets" inverseName="asset_list" inverseEntity="Assets" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GroupLibrary" positionX="-450" positionY="72" width="126" height="238"/>
         <element name="Assets" positionX="-54" positionY="72" width="128" height="223"/>
+        <element name="GroupLibrary" positionX="-450" positionY="72" width="126" height="238"/>
     </elements>
 </model>

@@ -15,6 +15,14 @@
 #import "DEMacro.h"
 
 /**
+ *  Core_Data
+ */
+#import "GroupLibrary.h"
+#import "GroupLibrary_CoreData.h"
+#import "Assets.h"
+#import "Asset_CoreData.h"
+
+/**
  *  카테고리
  */
 //#import "NSUserDefaults+Settings.h"

@@ -10,10 +10,7 @@
 #import "DEBaseViewController.h"
 
 
-@interface DEAlbumDetailViewController :DEBaseViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
-
-
+@interface DEAlbumDetailViewController :DEBaseViewController
 
 - (void)configureWithAlbumInfo:(NSDictionary *)selectedAlbum;
-
 @end

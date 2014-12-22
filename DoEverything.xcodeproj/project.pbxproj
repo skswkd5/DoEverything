@@ -41,6 +41,8 @@
 		A32D9D481A27024E0079DA95 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32D9D471A27024E0079DA95 /* Images.xcassets */; };
 		A32D9D4B1A27024E0079DA95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32D9D491A27024E0079DA95 /* LaunchScreen.xib */; };
 		A32D9D571A27024E0079DA95 /* DoEverythingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D9D561A27024E0079DA95 /* DoEverythingTests.m */; };
+		A3AE6EB91A47B12B00BEEFE4 /* GroupLibrary_CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AE6EB81A47B12B00BEEFE4 /* GroupLibrary_CoreData.m */; };
+		A3AE6EBC1A47B89A00BEEFE4 /* Asset_CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AE6EBB1A47B89A00BEEFE4 /* Asset_CoreData.m */; };
 		A3B11DAB1A35DF130045F4F1 /* DEGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B11DAA1A35DF130045F4F1 /* DEGauge.m */; };
 		A3B11DB01A35E75C0045F4F1 /* DEGNeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B11DAF1A35E75C0045F4F1 /* DEGNeedleView.m */; };
 		A3B11DB31A35E7A20045F4F1 /* DEGArcLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B11DB21A35E7A20045F4F1 /* DEGArcLayer.m */; };
@@ -125,6 +127,11 @@
 		A32D9D501A27024E0079DA95 /* DoEverythingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoEverythingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32D9D551A27024E0079DA95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A32D9D561A27024E0079DA95 /* DoEverythingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoEverythingTests.m; sourceTree = "<group>"; };
+		A3AE6EB71A47B12B00BEEFE4 /* GroupLibrary_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GroupLibrary_CoreData.h; path = Model/GroupLibrary_CoreData.h; sourceTree = "<group>"; };
+		A3AE6EB81A47B12B00BEEFE4 /* GroupLibrary_CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GroupLibrary_CoreData.m; path = Model/GroupLibrary_CoreData.m; sourceTree = "<group>"; };
+		A3AE6EBA1A47B89A00BEEFE4 /* Asset_CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Asset_CoreData.h; path = Model/Asset_CoreData.h; sourceTree = "<group>"; };
+		A3AE6EBB1A47B89A00BEEFE4 /* Asset_CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Asset_CoreData.m; path = Model/Asset_CoreData.m; sourceTree = "<group>"; };
+		A3AE6EBD1A47BBEE00BEEFE4 /* DEContextModules.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DEContextModules.h; path = Common/Headers/DEContextModules.h; sourceTree = "<group>"; };
 		A3B11DA91A35DF130045F4F1 /* DEGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEGauge.h; sourceTree = "<group>"; };
 		A3B11DAA1A35DF130045F4F1 /* DEGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEGauge.m; sourceTree = "<group>"; };
 		A3B11DAE1A35E75C0045F4F1 /* DEGNeedleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEGNeedleView.h; path = "Support Classes/DEGNeedleView.h"; sourceTree = "<group>"; };
@@ -231,6 +238,7 @@
 				A32CAAFE1A400FC5008AD4C9 /* DEMacro.h */,
 				A32CAAFF1A400FE4008AD4C9 /* DEConstants.h */,
 				A32CAB011A401131008AD4C9 /* DoEverything.h */,
+				A3AE6EBD1A47BBEE00BEEFE4 /* DEContextModules.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -375,6 +383,10 @@
 				A3299F901A441CDE00E75478 /* Assets.m */,
 				A3299F8C1A441CDD00E75478 /* GroupLibrary.h */,
 				A3299F8D1A441CDD00E75478 /* GroupLibrary.m */,
+				A3AE6EB71A47B12B00BEEFE4 /* GroupLibrary_CoreData.h */,
+				A3AE6EB81A47B12B00BEEFE4 /* GroupLibrary_CoreData.m */,
+				A3AE6EBA1A47B89A00BEEFE4 /* Asset_CoreData.h */,
+				A3AE6EBB1A47B89A00BEEFE4 /* Asset_CoreData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -506,6 +518,7 @@
 				A3B11DB61A35E7D50045F4F1 /* DEGGradientArcLayer.m in Sources */,
 				A32916951A3EAFB000824A39 /* DEDeviceInfo.m in Sources */,
 				A32D9D3A1A27024E0079DA95 /* main.m in Sources */,
+				A3AE6EBC1A47B89A00BEEFE4 /* Asset_CoreData.m in Sources */,
 				A328510A1A4172FF00582A0D /* DEAlbumDetailCollectionViewCell.m in Sources */,
 				A3299F8E1A441CDD00E75478 /* GroupLibrary.m in Sources */,
 				A329168C1A3EAF6B00824A39 /* DEGetValues.m in Sources */,
@@ -518,6 +531,7 @@
 				A32465381A37EE0D00B49F4A /* DEMGaugeView.m in Sources */,
 				A32C30E11A2EF527002D7381 /* DEPieLabel.m in Sources */,
 				A32CAAF81A3FF82C008AD4C9 /* DEAlbumListViewController.m in Sources */,
+				A3AE6EB91A47B12B00BEEFE4 /* GroupLibrary_CoreData.m in Sources */,
 				A32D9D431A27024E0079DA95 /* ViewController.m in Sources */,
 				A32C30E41A2EF53F002D7381 /* DEPieAnimator.m in Sources */,
 				A32D9D401A27024E0079DA95 /* DoEverything.xcdatamodeld in Sources */,

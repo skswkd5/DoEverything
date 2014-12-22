@@ -23,6 +23,6 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)setAssets:(NSArray *)assetList;
-- (void)markAsSelected:(BOOL)selected;
-    
+//- (void)markAsSelected:(BOOL)selected;
+
 @end
