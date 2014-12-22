@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self feachAssetsFromAssets];
+//    [self feachAssetsFromAssets];
     
     if ([self.selectedAlbum[@"TotalCount"] intValue])
     {
@@ -76,11 +76,6 @@
 }
 
 #pragma mark - AssetsFromAlbum
-- (void)configureWithAlbumInfo:(NSDictionary *)selectedAlbum
-{
-    
-}
-
 
 
 
