@@ -83,10 +83,10 @@
         [fetchRequest setEntity:entity];
         
         NSPredicate *predicate = nil;
-        NSString *attributeName = @"groupName";
-        NSString *attributeValue = group[@"groupName"];
+        NSString *attributeName = @"groupId";
+        NSString *attributeValue = group[@"groupId"];
         
-        predicate = [NSPredicate predicateWithFormat:@"%K like %@", attributeName, attributeValue];
+        predicate = [NSPredicate predicateWithFormat:@"%K like %@ ", attributeName, attributeValue];
         [fetchRequest setPredicate:predicate];
         [fetchRequest setResultType:NSManagedObjectIDResultType];
         

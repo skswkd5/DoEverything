@@ -28,17 +28,24 @@
     
     NSManagedObjectContext *context = [self managedObjectContext];
     NSManagedObject *assets = [NSEntityDescription insertNewObjectForEntityForName:@"Assets" inManagedObjectContext:context];
-    [assets setValue:asset[@"AssetUrl"] forKey:@"assetUrl"];
-    [assets setValue:asset[@"Date"] forKey:@"date"];
+    [assets setValue:[asset[@"assetUrl"] absoluteString] forKey:@"assetUrl"];
+    [assets setValue:asset[@"date"] forKey:@"date"];
     [assets setValue:[asset[@"url"] absoluteString] forKey:@"url"];
     [assets setValue:[asset[@"AssetUrl"] absoluteString] forKey:@"assetUrl"];
-    [assets setValue:asset[@"GroupId"] forKey:@"groupId"];
-    [assets setValue:asset[@"ID"] forKey:@"id"];
-    [assets setValue:asset[@"Location"] forKey:@"location"];
-    [assets setValue:asset[@"Meta"] forKey:@"meta"];
-    [assets setValue:asset[@"Scale"] forKey:@"scale"];
-    [assets setValue:asset[@"Size"] forKey:@"size"];
-    [assets setValue:asset[@"Type"] forKey:@"type"];
+    [assets setValue:asset[@"groupId"] forKey:@"groupId"];
+    [assets setValue:asset[@"byte"] forKey:@"byte"];
+    [assets setValue:asset[@"location"] forKey:@"location"];
+    [assets setValue:asset[@"meta"] forKey:@"meta"];
+    [assets setValue:asset[@"scale"] forKey:@"scale"];
+    [assets setValue:asset[@"size"] forKey:@"size"];
+    [assets setValue:asset[@"type"] forKey:@"type"];
+    [assets setValue:asset[@"width"] forKey:@"width"];
+    [assets setValue:asset[@"height"] forKey:@"height"];
+    [assets setValue:asset[@"duration"] forKey:@"duration"];
+    [assets setValue:asset[@"orientation"] forKey:@"orientation"];
+    [assets setValue:asset[@"fileName"] forKey:@"fileName"];
+    [assets setValue:asset[@"path"] forKey:@"path"];
+    [assets setValue:asset[@"fullPath"] forKey:@"fullPath"];
     
     NSError *error = nil;
     

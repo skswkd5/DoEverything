@@ -116,7 +116,7 @@ static DEMultimediaInfo *sharedDEMultimediaInfo = nil;
 {
     __block ALAssetsGroup *group = tmpGroup;
     __block long long totalSize = 0;
-    __block long long totalIamge = 0;
+    __block long long totalImage = 0;
     __block long long totalVideo = 0;
     
     [group enumerateAssetsUsingBlock:^(ALAsset *asset, NSUInteger index, BOOL *stop){
@@ -126,6 +126,10 @@ static DEMultimediaInfo *sharedDEMultimediaInfo = nil;
         //사진 한장씩 넣기
         if(asset == nil)
         {
+            totalSize = totalImage + totalVideo;
+            [dicInfo setValue:[NSNumber numberWithLongLong:totalSize] forKey:@"totalSize"];
+            NSLog(@"dicGroup: %@", dicInfo);
+            [GroupLibrary_CoreData updateGroupLibraryToCoreData:dicInfo];
             return;
         }
         else
@@ -138,6 +142,10 @@ static DEMultimediaInfo *sharedDEMultimediaInfo = nil;
             NSString *type = [asset valueForProperty:ALAssetPropertyType];
             NSURL *url = [asset valueForProperty:ALAssetPropertyURLs];
             NSArray *urls = [asset valueForProperty:ALAssetPropertyURLs];
+            NSString *dateString = [NSDateFormatter localizedStringFromDate:date
+                                                                  dateStyle:NSDateFormatterShortStyle
+                                                                  timeStyle:NSDateFormatterFullStyle];
+            NSLog(@"%@",dateString);
             
             NSLog(@" assetUrl: %@", assetUrl);
             NSLog(@" date: %@", date);
@@ -150,7 +158,7 @@ static DEMultimediaInfo *sharedDEMultimediaInfo = nil;
             
             [dic setObject:[dicInfo objectForKey:@"groupId"] forKey:@"groupId"];
             [dic setObject:assetUrl forKey:@"assetUrl"];
-            [dic setObject:date forKey:@"date"];
+            [dic setObject:dateString forKey:@"date"];
             [dic setObject:[orientation stringValue] forKey:@"orientation"];
             [dic setObject:type forKey:@"type"];
             [dic setObject:url forKey:@"url"];
@@ -172,7 +180,6 @@ static DEMultimediaInfo *sharedDEMultimediaInfo = nil;
             
             ALAssetOrientation orientation2 = [representation orientation];
             float scale = [representation scale];
-            
             
             NSLog(@"  uti:%@", uti);
             NSLog(@"  size:%lld", size);
@@ -199,10 +206,11 @@ static DEMultimediaInfo *sharedDEMultimediaInfo = nil;
                 //이미지 일때
                 UIImage *image = [UIImage imageWithCGImage:representation.fullScreenImage];
                 NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation(image, 1.0)];
-                NSInteger imageSize = imageData.length/1024/1024;
-                NSLog(@" imageSize: %ldMB", (long)imageSize);
+                NSInteger imageSize = imageData.length;
+                NSLog(@" imageSize: %ld", (long)imageSize);
                 
-                totalIamge += imageSize;
+                [dic setObject:[NSNumber numberWithInteger:imageSize] forKey:@"byte"];
+                totalImage += imageSize;
                 
             }
             else if([asset valueForProperty:ALAssetPropertyType] == ALAssetTypeVideo)
@@ -213,8 +221,9 @@ static DEMultimediaInfo *sharedDEMultimediaInfo = nil;
                 NSLog(@"buffered: %lu", (unsigned long)buffered);
             
                 NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
-                NSInteger videoSize = data.length/1024/1024;
-                NSLog(@" imageSize: %ldMB", (long)videoSize);
+                NSInteger videoSize = data.length;
+                NSLog(@" imageSize: %ld", (long)videoSize);
+                [dic setObject:[NSNumber numberWithInteger:videoSize] forKey:@"byte"];
                 
                 totalVideo += videoSize;
             }
@@ -231,55 +240,13 @@ static DEMultimediaInfo *sharedDEMultimediaInfo = nil;
                 NSLog(@"fileSize -> %d", [fileSize intValue]);
             }
             
+            [Asset_CoreData insertAssetsToCoreData:dic];
+            
         }
         
     }];
 
 }
-
-//- (void)setAssetInfo:(ALAssetsGroup *)tmpGroup AlbumInfo:(NSDictionary *)dicInfo
-//{
-//    __block NSMutableArray *tmpAsset = [[NSMutableArray alloc] init];
-//    __block ALAssetsGroup *group = tmpGroup;
-//
-//           [group enumerateAssetsUsingBlock:^(ALAsset *asset, NSUInteger index, BOOL *stop){
-//               NSLog(@"Assets: %@", asset);
-//               //사진 한장씩 넣기
-//               if(asset == nil)
-//               {
-//                   return;
-//               }
-//               else
-//               {
-//                   NSURL *assetUrl = [asset valueForProperty:ALAssetPropertyAssetURL];
-//                   NSDate *date = [asset valueForProperty:ALAssetPropertyDate];
-//                   NSNumber *duration = [asset valueForProperty:ALAssetPropertyDuration];
-//                   NSString *location = [asset valueForProperty:ALAssetPropertyLocation];
-//                   NSNumber *orientation = [asset valueForProperty:ALAssetPropertyOrientation];
-//                   NSString *type = [asset valueForProperty:ALAssetPropertyType];
-//                   NSURL *url = [asset valueForProperty:ALAssetPropertyURLs];
-//                   
-//                   ALAssetRepresentation *representation = [asset valueForProperty:ALAssetPropertyRepresentations];
-//                   NSString *uti = [representation UTI];
-//                   CGSize dimensions = [representation dimensions];
-//                   long long size = [representation size];
-//                   
-//                   CGImageRef *fullImg = [representation fullResolutionImage];
-//                   CGImageRef *fullScreenImg = [representation fullScreenImage];
-//                   
-//                   NSURL *url2 = [representation url];
-//                   NSDictionary *meta = [representation metadata];
-//                   
-//                   ALAssetOrientation orientation2 = [representation orientation];
-//                   float scale = [representation scale];
-//                   NSString *fileName = [representation filename];
-//                   
-////                   [Asset_CoreData insertAssetsToCoreData:dicInfo];
-//                   
-//               }
-//           }];
-//}
-
 
 
 @end
