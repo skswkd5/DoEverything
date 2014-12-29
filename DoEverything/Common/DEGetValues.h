@@ -18,9 +18,9 @@
 + (uint64_t)getSpaceForVideos;
 
 + (NSString *)memoryFormatter:(long long)diskSpace;
-+ (long long)totalDiskSpace;
-+ (long long)freeDiskSpace;
-+ (long long)usedDiskSpace;
+//+ (long long)totalDiskSpace;
+//+ (long long)freeDiskSpace;
+//+ (long long)usedDiskSpace;
 
 + (NSNumber *)totalDiskSize;
 + (NSNumber *)freeDiskSize;

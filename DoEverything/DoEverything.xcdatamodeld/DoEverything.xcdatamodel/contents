@@ -4,22 +4,25 @@
         <attribute name="assetUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="byte" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="fileName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="groupId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="meta" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orientation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scale" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="asset_list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupLibrary" inverseName="group_library" inverseEntity="GroupLibrary" syncable="YES"/>
     </entity>
     <entity name="GroupLibrary" representedClassName="GroupLibrary" syncable="YES">
-        <attribute name="assetNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="groupId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="persistentID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="posterImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalAsset" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="totalImage" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -30,7 +33,7 @@
         <relationship name="group_library" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Assets" inverseName="asset_list" inverseEntity="Assets" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Assets" positionX="-54" positionY="72" width="128" height="223"/>
-        <element name="GroupLibrary" positionX="-450" positionY="72" width="126" height="238"/>
+        <element name="Assets" positionX="-54" positionY="72" width="128" height="313"/>
+        <element name="GroupLibrary" positionX="-450" positionY="72" width="126" height="193"/>
     </elements>
 </model>

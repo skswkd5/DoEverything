@@ -41,16 +41,17 @@
     if(group == nil)
         return NO;
     
-//    AppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [self managedObjectContext];// [appDelegate managedObjectContext];
+    NSManagedObjectContext *context = [self managedObjectContext];
     NSManagedObject *newGroup = [NSEntityDescription insertNewObjectForEntityForName:@"GroupLibrary" inManagedObjectContext:context];
-    [newGroup setValue:group[@"AlbumName"] forKey:@"name"];
-    [newGroup setValue:group[@"Type"] forKey:@"type"];
+    [newGroup setValue:group[@"groupName"] forKey:@"groupName"];
+    [newGroup setValue:group[@"groupId"] forKey:@"groupId"];
+    [newGroup setValue:group[@"type"] forKey:@"type"];
     [newGroup setValue:[group[@"url"] absoluteString] forKey:@"url"];
-    [newGroup setValue:group[@"PersisId"] forKey:@"persistentID"];
-    [newGroup setValue:group[@"TotalCount"] forKey:@"totalAsset"];
-    [newGroup setValue:group[@"TotalImage"] forKey:@"totalImage"];
-    [newGroup setValue:group[@"TotalVideo"] forKey:@"totalVideo"];
+    [newGroup setValue:group[@"totalAsset"] forKey:@"totalAsset"];
+    [newGroup setValue:group[@"totalImage"] forKey:@"totalImage"];
+    [newGroup setValue:group[@"totalVideo"] forKey:@"totalVideo"];
+    [newGroup setValue:group[@"totalSize"] forKey:@"totalSize"];
+    [newGroup setValue:group[@"posterImage"] forKey:@"posterImage"];
     
     NSError *error = nil;
     
@@ -82,8 +83,8 @@
         [fetchRequest setEntity:entity];
         
         NSPredicate *predicate = nil;
-        NSString *attributeName = @"name";
-        NSString *attributeValue = group[@"AlbumName"];
+        NSString *attributeName = @"groupName";
+        NSString *attributeValue = group[@"groupName"];
         
         predicate = [NSPredicate predicateWithFormat:@"%K like %@", attributeName, attributeValue];
         [fetchRequest setPredicate:predicate];
@@ -102,13 +103,16 @@
             //추가된 그룹을 insert 한다.
 //            [self insertGroupLibraryToCoreData:group];
             tmp = (GroupLibrary *)[NSEntityDescription insertNewObjectForEntityForName:@"GroupLibrary" inManagedObjectContext:context];
-            tmp.name = group[@"AlbumName"];
-            tmp.type = group[@"Type"];
+            tmp.groupName = group[@"groupName"];
+            tmp.type = group[@"type"];
             tmp.url = group[@"url"];
-            tmp.persistentID = group[@"PersisId"];
-            tmp.totalAsset = group[@"TotalCount"];
-            tmp.totalImage = group[@"TotalImage"];
-            tmp.totalImage = group[@"TotalVideo"];
+            tmp.groupId = group[@"groupId"];
+            tmp.totalAsset = group[@"totalAsset"];
+            tmp.totalImage = group[@"totalImage"];
+            tmp.totalVideo = group[@"totalVideo"];
+            tmp.posterImage = group [@"posterImage"];
+            tmp.totalSize = group[@"totalSize"];
+            
         }
         
         fetchRequest = nil;
@@ -143,6 +147,8 @@
     
     return result;
 }
+
+
 
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 @interface Asset_CoreData : NSObject
 
++ (NSManagedObjectContext *)managedObjectContext;
++ (BOOL)insertAssetsToCoreData:(NSDictionary *)asset;
 @end

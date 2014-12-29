@@ -423,7 +423,7 @@
         if( latest > greatest   )   greatest = latest;  // track greatest mem usage
         int greatest_diff = greatest - last_greatest;
         int latest_greatest_diff = latest - greatest;
-        NSLog(@"Mem: %10u (%10d) : %10d :   greatest: %10u (%d)", info.resident_size, diff,
+        NSLog(@"Mem: %10lu (%10d) : %10d :   greatest: %10u (%d)", info.resident_size, diff,
               latest_greatest_diff,
               greatest, greatest_diff  );
     } else {

@@ -64,7 +64,7 @@
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     GroupLibrary *dicAlbumInfo = (GroupLibrary*)[self.arrAlbums objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)", dicAlbumInfo.name, [dicAlbumInfo.totalAsset intValue]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)", dicAlbumInfo.groupName, [dicAlbumInfo.totalAsset intValue]];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"이미지: %d장   동영상:%d개", [dicAlbumInfo.totalImage intValue], [dicAlbumInfo.totalVideo intValue]];
     
     return cell;
